@@ -726,19 +726,6 @@ function App() {
         {content.stickyCta}
       </MotionButton>
 
-      <AnimatePresence mode="wait">
-        <MotionDiv
-          key={notificationIndex}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 12 }}
-          className="fixed bottom-24 left-4 z-40 max-w-[18rem] rounded-2xl bg-white/95 px-4 py-3 text-sm font-medium text-slate-900 shadow-[0_20px_50px_rgba(15,23,42,0.14)]"
-          aria-live="polite"
-        >
-          {notificationNames[notificationIndex]}
-        </MotionDiv>
-      </AnimatePresence>
-
     </div>
   )
 }
