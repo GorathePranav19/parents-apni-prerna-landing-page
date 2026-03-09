@@ -566,6 +566,72 @@ function App() {
                 value={faqQuery}
                 onChange={(event) => setFaqQuery(event.target.value)}
               />
+
+              <MotionDiv
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className="relative mt-8 overflow-hidden rounded-[2rem] bg-[linear-gradient(145deg,#0066FF,#4f8fff_58%,#ffefe0)] p-6 text-white shadow-[0_24px_60px_rgba(0,82,204,0.18)]"
+              >
+                <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10 blur-2xl" />
+                <div className="absolute -bottom-8 -left-8 h-28 w-28 rounded-full bg-prerna-orange/30 blur-2xl" />
+
+                <div className="relative">
+                  <p className="text-sm font-bold uppercase tracking-[0.22em] text-white/75">Support Guide</p>
+                  <h3 className="mt-3 font-heading text-2xl">Answers for parents, without the confusion</h3>
+                  <p className="mt-3 max-w-sm text-sm leading-7 text-white/85">
+                    Browse common questions about safety, setup, reports, and daily use before you start.
+                  </p>
+
+                  <div className="relative mt-8 h-56">
+                    <MotionDiv
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 4.2, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+                      className="absolute left-6 top-8 rounded-[1.6rem] bg-white px-5 py-4 text-slate-900 shadow-[0_18px_35px_rgba(15,23,42,0.16)]"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="grid h-11 w-11 place-items-center rounded-2xl bg-prerna-blue-light text-prerna-blue">
+                          <CircleHelp className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                        <div>
+                          <p className="font-heading text-base">Quick answers</p>
+                          <p className="text-xs text-slate-500">Setup, plans, reports</p>
+                        </div>
+                      </div>
+                    </MotionDiv>
+
+                    <MotionDiv
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+                      className="absolute right-4 top-20 rounded-[1.4rem] bg-white/18 px-4 py-3 backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-prerna-orange" />
+                        <span className="text-sm font-semibold text-white">Search questions</span>
+                      </div>
+                    </MotionDiv>
+
+                    <MotionDiv
+                      animate={{ scale: [1, 1.06, 1] }}
+                      transition={{ duration: 3.8, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+                      className="absolute bottom-5 left-1/2 grid h-24 w-24 -translate-x-1/2 place-items-center rounded-full border border-white/25 bg-white/12 backdrop-blur-md"
+                    >
+                      <div className="grid h-16 w-16 place-items-center rounded-full bg-white text-prerna-blue shadow-[0_10px_30px_rgba(15,23,42,0.16)]">
+                        <CircleHelp className="h-8 w-8" aria-hidden="true" />
+                      </div>
+                    </MotionDiv>
+
+                    <MotionDiv
+                      animate={{ x: [0, 8, 0] }}
+                      transition={{ duration: 4.6, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+                      className="absolute bottom-10 right-3 rounded-full bg-white px-4 py-2 text-sm font-semibold text-prerna-blue shadow-[0_14px_28px_rgba(15,23,42,0.14)]"
+                    >
+                      Parent help
+                    </MotionDiv>
+                  </div>
+                </div>
+              </MotionDiv>
             </div>
             <div className="space-y-4">
               {filteredFaqs.map(([question, answer], index) => {
@@ -665,7 +731,7 @@ function App() {
           </div>
           <div className="space-y-3">
             <h4 className="font-heading text-lg text-white">Contact</h4>
-            <a className="block transition hover:text-prerna-orange" href="mailto:support@apniprerna.org">support@apniprerna.org</a>
+            <a className="block transition hover:text-prerna-orange" href="mailto:team@apnipathshala.org">team@apnipathshala.org</a>
             <a className="block transition hover:text-prerna-orange" href="tel:+919270185253">+91 92701 85253</a>
             <p>Mumbai, Maharashtra, India</p>
           </div>
