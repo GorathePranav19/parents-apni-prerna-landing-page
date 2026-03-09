@@ -50,7 +50,7 @@ const content = {
   closeOffer: 'No, Thanks',
 }
 
-const googleFormUrl = 'https://forms.gle/rPHJRmPe7SVMWKVe6'
+const googleFormUrl = 'https://forms.gle/ZN9PWNQghGz5eAE29'
 
 const problems = [
   ['Shield', 'Harmful Websites', 'Unsafe content can appear without warning', 'Children can be exposed to adult content, unsafe links, gambling pages, and malware-based websites while browsing.'],
