@@ -44,10 +44,6 @@ const content = {
   footerTagline: '',
   stickyCta: 'Start Subscription',
   chat: 'Need Help? Contact Us',
-  exitHeadline: 'Before You Leave',
-  exitBody: 'Would you like a quick demo before you leave?',
-  claimOffer: 'Yes, Show Demo',
-  closeOffer: 'No, Thanks',
 }
 
 const googleFormUrl = 'https://forms.gle/ZN9PWNQghGz5eAE29'
@@ -128,13 +124,6 @@ const faqs = [
   ['Does it help reduce distractions during study time?', 'Yes. Distraction control is a core feature and is designed to reduce access to gaming, entertainment, and non-learning websites during productive hours.'],
 ]
 
-const notificationNames = [
-  'A parent just reviewed a weekly usage summary',
-  'A new family started safer computer protection',
-  'A learning-focused plan was activated',
-  'A student device was secured with Apni Prerna',
-]
-
 const navItems = [
   ['features', 'Features'],
   ['how-it-works', 'How It Works'],
@@ -200,7 +189,6 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [faqQuery, setFaqQuery] = useState('')
   const [showStickyCta, setShowStickyCta] = useState(false)
-  const [notificationIndex, setNotificationIndex] = useState(0)
   const heroRef = useRef(null)
 
   const filteredFaqs = useMemo(
@@ -252,14 +240,6 @@ function App() {
     trackEvent('cta_click', source)
     window.open(googleFormUrl, '_blank', 'noopener,noreferrer')
   }
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setNotificationIndex((index) => (index + 1) % notificationNames.length)
-    }, 6000)
-
-    return () => window.clearInterval(interval)
-  }, [])
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,102,255,0.12),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbff_38%,#ffffff_100%)] text-slate-900">
