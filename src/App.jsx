@@ -20,9 +20,9 @@ const content = {
   navCta: 'Start Subscription',
   heroHeadline: 'Protect Your Child in the Digital World',
   heroSubheadline:
-    'Apni Prerna Safe Zone helps parents keep children safe on computers and the internet by blocking harmful websites, reducing distractions, and supporting responsible device usage.',
+    'Apni Prerna Safe Zone helps parents keep children safe online by blocking harmful websites, reducing distractions, and supporting responsible device use.',
   heroDescription:
-    'Built for families, schools, and learning environments, Apni Prerna creates a safer digital space where students can focus on learning without exposure to unsafe content, risky downloads, or unnecessary distractions.',
+    'Built for families and schools, Apni Prerna creates a safer digital space where students can focus on learning without unsafe content or risky downloads.',
   trustLine: 'Student safety software | Parent-friendly dashboard | Built for responsible digital use',
   primaryCta: 'Start Protecting My Child',
   secondaryCta: 'See How It Works',
@@ -31,7 +31,7 @@ const content = {
   problemHeadline: 'The Internet Is Not Always Safe for Children',
   solutionHeadline: 'Student Safety Software Designed for Everyday Protection',
   solutionSubheadline:
-    'Apni Prerna gives parents clear controls and clear information so children can use computers for learning in a safe and responsible way.',
+    'Apni Prerna gives parents simple controls and clear visibility for safer learning.',
   howHeadline: 'How Apni Prerna Works',
   dashboardHeadline: 'Parent Dashboard Visibility Without Complexity',
   pricingHeadline: 'Choose a Plan That Fits Your Family',
@@ -40,7 +40,7 @@ const content = {
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
   finalSubheadline:
-    'Start using Apni Prerna Safe Zone to block harmful websites, reduce distractions, and maintain a productive digital environment for your child.',
+    'Start using Apni Prerna Safe Zone to block harmful websites, reduce distractions, and support productive device use.',
   finalCta: 'Start Subscription',
   contactCta: 'Contact for Setup Help',
   footerTagline: 'Student safety software for safe and responsible digital usage',
@@ -57,33 +57,33 @@ const content = {
 }
 
 const problems = [
-  ['Shield', 'Harmful Websites', 'Unsafe content can appear without warning', 'Children can be exposed to adult content, unsafe links, gambling pages, and malware-based websites while browsing.'],
-  ['Alert', 'Online Distractions', 'Learning time is easily lost', 'Games, entertainment platforms, and social websites can break concentration and reduce productive computer use.'],
-  ['Download', 'Unsafe Downloads', 'Risky files affect device safety', 'Unverified downloads, unwanted programs, and unsafe tools can create security issues on a student device.'],
+  ['Shield', 'Harmful Websites', 'Unsafe content can appear without warning', 'Adult content, unsafe links, gambling pages, and malware can reach children while browsing.'],
+  ['Alert', 'Online Distractions', 'Learning time is easily lost', 'Games, entertainment sites, and social platforms can break focus and reduce productive study time.'],
+  ['Download', 'Unsafe Downloads', 'Risky files affect device safety', 'Unverified downloads and unwanted tools can create security risks on a student device.'],
 ]
 
 const features = [
-  ['Shield', '01', 'Harmful Website Blocking', 'Automatically blocks inappropriate websites, malware pages, adult content, gambling pages, and unsafe downloads.', 'Core Safety'],
-  ['Blocks', '02', 'Distraction Control', 'Restricts access to games, social media, and entertainment platforms during study time to keep attention on learning.', 'Focus Time'],
-  ['MonitorCheck', '03', 'Safe Device Monitoring', 'Checks device safety and helps ensure unsafe or unwanted programs are not actively running.', 'Device Health'],
-  ['SearchCheck', '04', 'Learning-Focused Environment', 'Supports productive device usage by keeping the computer centered on educational activities and student work.', 'Learning First'],
-  ['ClipboardList', '05', 'Activity Summary for Parents', 'Shows simplified usage summaries so parents can understand how the computer is being used.', 'Parent Visibility'],
-  ['Bot', '06', 'Smart Safety Policies', 'Applies rules that maintain safe and productive use of the device without making setup difficult for families.', 'Smart Rules'],
+  ['Shield', '01', 'Harmful Website Blocking', 'Blocks inappropriate websites, malware pages, adult content, gambling pages, and unsafe downloads.', 'Core Safety'],
+  ['Blocks', '02', 'Distraction Control', 'Restricts games, social media, and entertainment platforms during study time.', 'Focus Time'],
+  ['MonitorCheck', '03', 'Safe Device Monitoring', 'Checks device safety and helps ensure unsafe programs are not active.', 'Device Health'],
+  ['SearchCheck', '04', 'Learning-Focused Environment', 'Keeps computer use centered on learning and student work.', 'Learning First'],
+  ['ClipboardList', '05', 'Activity Summary for Parents', 'Shows simple usage summaries so parents can understand device use.', 'Parent Visibility'],
+  ['Bot', '06', 'Smart Safety Policies', 'Applies rules that keep device use safe and productive.', 'Smart Rules'],
 ]
 
 const steps = [
-  ['01', 'Create an Account', 'Parents sign up and choose the subscription plan that fits their needs.', 'Step 1'],
-  ['02', "Install on the Child's Computer", 'Apni Prerna is installed on the student device to begin protection and rule enforcement.', 'Step 2'],
-  ['03', 'Monitor and Protect Automatically', 'Once installed, the software works in the background and parents can review summaries and alerts.', 'Step 3'],
+  ['01', 'Create an Account', 'Sign up and choose the plan that fits your needs.', 'Step 1'],
+  ['02', "Install on the Child's Computer", 'Install Apni Prerna on the student device.', 'Step 2'],
+  ['03', 'Monitor and Protect Automatically', 'Protection runs in the background while parents review alerts and summaries.', 'Step 3'],
 ]
 
 const dashboardItems = [
-  ['Bell', 'Safety alerts', 'Receive clear updates when risky activity or blocked content is detected.'],
-  ['Shield', 'Blocked website information', 'See what websites were restricted and why they were blocked.'],
-  ['LayoutDashboard', 'Device status', 'Check whether the student computer is active, protected, and working within the set policies.'],
-  ['ClipboardList', 'Activity summaries', 'Review simplified summaries of usage without needing technical knowledge.'],
-  ['ChartColumn', 'Weekly usage reports', 'Understand overall learning and device usage patterns over time.'],
-  ['Gauge', 'Smart visibility', 'Stay informed without constantly supervising the child in person.'],
+  ['Bell', 'Safety alerts', 'Get updates when risky activity or blocked content is detected.'],
+  ['Shield', 'Blocked website information', 'See what websites were restricted and why.'],
+  ['LayoutDashboard', 'Device status', 'Check whether the student computer is active and protected.'],
+  ['ClipboardList', 'Activity summaries', 'Review simple usage summaries without technical complexity.'],
+  ['ChartColumn', 'Weekly usage reports', 'Understand overall device and learning patterns over time.'],
+  ['Gauge', 'Smart visibility', 'Stay informed without constant supervision.'],
 ]
 
 const comparisonRows = [
@@ -123,16 +123,16 @@ const plans = [
 ]
 
 const faqs = [
-  ['What type of websites does Apni Prerna block?', 'It blocks harmful or inappropriate websites such as adult content, gambling pages, unsafe links, malware sources, and other risky websites.'],
-  ['Is the software monitoring my child activity?', 'It provides parents with simplified activity summaries, blocked website information, safety alerts, and usage reports focused on safe device use.'],
-  ['How easy is the installation process?', 'The setup is simple: create an account, install the software on the child computer, and let the platform begin protecting the device.'],
-  ['Can parents view activity reports?', 'Yes. Parents can access summaries, alerts, blocked site information, device status, and weekly usage reports depending on the selected plan.'],
-  ['What devices can run Apni Prerna?', 'The website presents Apni Prerna as software for protecting student computers and internet usage in home and learning environments.'],
-  ['Can schools and learning centres use it?', 'Yes. The platform can also support schools, educational institutions, learning centres, and digital learning programs.'],
-  ['Does it help reduce distractions during study time?', 'Yes. Distraction control is a core feature and is designed to reduce access to gaming, entertainment, and non-learning websites during productive hours.'],
-  ['What is included in the parent dashboard?', 'The dashboard gives access to safety alerts, blocked website details, device status, activity summaries, and weekly usage reports.'],
-  ['Are annual subscription options available?', 'Yes. The website states that annual subscription options are available in addition to the monthly plans.'],
-  ['Who is this product designed for?', 'It is primarily designed for parents of students aged 8 to 18 who want safer and more responsible computer and internet usage.'],
+  ['What type of websites does Apni Prerna block?', 'It blocks harmful websites such as adult content, gambling pages, unsafe links, and malware sources.'],
+  ["Is the software monitoring my child's activity?", 'It gives parents simple summaries, blocked website information, alerts, and usage reports.'],
+  ['How easy is the installation process?', 'Create an account, install the software on the child computer, and protection begins.'],
+  ['Can parents view activity reports?', 'Yes. Parents can view summaries, alerts, blocked site information, device status, and weekly reports.'],
+  ['What devices can run Apni Prerna?', 'Apni Prerna is designed for protecting student computers in home and learning environments.'],
+  ['Can schools and learning centres use it?', 'Yes. It can also support schools, educational institutions, and learning centres.'],
+  ['Does it help reduce distractions during study time?', 'Yes. It reduces access to gaming, entertainment, and other non-learning websites during productive hours.'],
+  ['What is included in the parent dashboard?', 'The dashboard includes alerts, blocked website details, device status, summaries, and weekly reports.'],
+  ['Are annual subscription options available?', 'Yes. Annual subscription options are available for all plans.'],
+  ['Who is this product designed for?', 'It is designed mainly for parents of students aged 8 to 18.'],
 ]
 
 const notificationNames = [
