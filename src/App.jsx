@@ -541,7 +541,10 @@ function App() {
                   <button
                     className={`mt-8 w-full ${plan.featured ? primaryButtonClass : secondaryButtonClass}`}
                     type="button"
-                    onClick={() => openFormModal(`pricing-${plan.name.toLowerCase()}`)}
+                    onClick={() => {
+                      trackEvent('cta_click', `pricing-${plan.name.toLowerCase()}`)
+                      document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' })
+                    }}
                   >
                     {content.navCta}
                   </button>
