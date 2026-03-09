@@ -1,4 +1,19 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import {
+  AlertTriangle,
+  Bell,
+  Blocks,
+  Bot,
+  ChartColumn,
+  CircleHelp,
+  ClipboardList,
+  Download,
+  Gauge,
+  LayoutDashboard,
+  MonitorCheck,
+  SearchCheck,
+  Shield,
+} from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 const content = {
@@ -48,12 +63,12 @@ const problems = [
 ]
 
 const features = [
-  ['01', 'Harmful Website Blocking', 'Automatically blocks inappropriate websites, malware pages, adult content, gambling pages, and unsafe downloads.', 'Core Safety'],
-  ['02', 'Distraction Control', 'Restricts access to games, social media, and entertainment platforms during study time to keep attention on learning.', 'Focus Time'],
-  ['03', 'Safe Device Monitoring', 'Checks device safety and helps ensure unsafe or unwanted programs are not actively running.', 'Device Health'],
-  ['04', 'Learning-Focused Environment', 'Supports productive device usage by keeping the computer centered on educational activities and student work.', 'Learning First'],
-  ['05', 'Activity Summary for Parents', 'Shows simplified usage summaries so parents can understand how the computer is being used.', 'Parent Visibility'],
-  ['06', 'Smart Safety Policies', 'Applies rules that maintain safe and productive use of the device without making setup difficult for families.', 'Smart Rules'],
+  ['Shield', '01', 'Harmful Website Blocking', 'Automatically blocks inappropriate websites, malware pages, adult content, gambling pages, and unsafe downloads.', 'Core Safety'],
+  ['Blocks', '02', 'Distraction Control', 'Restricts access to games, social media, and entertainment platforms during study time to keep attention on learning.', 'Focus Time'],
+  ['MonitorCheck', '03', 'Safe Device Monitoring', 'Checks device safety and helps ensure unsafe or unwanted programs are not actively running.', 'Device Health'],
+  ['SearchCheck', '04', 'Learning-Focused Environment', 'Supports productive device usage by keeping the computer centered on educational activities and student work.', 'Learning First'],
+  ['ClipboardList', '05', 'Activity Summary for Parents', 'Shows simplified usage summaries so parents can understand how the computer is being used.', 'Parent Visibility'],
+  ['Bot', '06', 'Smart Safety Policies', 'Applies rules that maintain safe and productive use of the device without making setup difficult for families.', 'Smart Rules'],
 ]
 
 const steps = [
@@ -63,12 +78,12 @@ const steps = [
 ]
 
 const dashboardItems = [
-  ['Safety alerts', 'Receive clear updates when risky activity or blocked content is detected.'],
-  ['Blocked website information', 'See what websites were restricted and why they were blocked.'],
-  ['Device status', 'Check whether the student computer is active, protected, and working within the set policies.'],
-  ['Activity summaries', 'Review simplified summaries of usage without needing technical knowledge.'],
-  ['Weekly usage reports', 'Understand overall learning and device usage patterns over time.'],
-  ['Smart visibility', 'Stay informed without constantly supervising the child in person.'],
+  ['Bell', 'Safety alerts', 'Receive clear updates when risky activity or blocked content is detected.'],
+  ['Shield', 'Blocked website information', 'See what websites were restricted and why they were blocked.'],
+  ['LayoutDashboard', 'Device status', 'Check whether the student computer is active, protected, and working within the set policies.'],
+  ['ClipboardList', 'Activity summaries', 'Review simplified summaries of usage without needing technical knowledge.'],
+  ['ChartColumn', 'Weekly usage reports', 'Understand overall learning and device usage patterns over time.'],
+  ['Gauge', 'Smart visibility', 'Stay informed without constantly supervising the child in person.'],
 ]
 
 const comparisonRows = [
@@ -127,6 +142,31 @@ const notificationNames = [
   'A student device was secured with Apni Prerna',
 ]
 
+const navItems = [
+  ['features', 'Features'],
+  ['how-it-works', 'How It Works'],
+  ['dashboard', 'Dashboard'],
+  ['pricing', 'Pricing'],
+  ['faq', 'FAQ'],
+  ['contact', 'Contact'],
+]
+
+const iconMap = {
+  Shield,
+  Alert: AlertTriangle,
+  Download,
+  Bell,
+  Blocks,
+  MonitorCheck,
+  SearchCheck,
+  ClipboardList,
+  Bot,
+  LayoutDashboard,
+  Gauge,
+  ChartColumn,
+  CircleHelp,
+}
+
 const primaryButtonClass =
   'inline-flex min-h-12 items-center justify-center rounded-2xl bg-prerna-orange px-6 py-3 font-heading text-sm font-semibold text-white shadow-[0_16px_40px_rgba(255,136,0,0.28)] transition hover:-translate-y-0.5 hover:bg-prerna-orange-dark focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-prerna-blue/30'
 
@@ -164,13 +204,17 @@ function Section({ id, className = '', children }) {
 
 function App() {
   const [activeFaq, setActiveFaq] = useState(0)
+  const [activeSection, setActiveSection] = useState('home')
   const [faqQuery, setFaqQuery] = useState('')
   const [showStickyCta, setShowStickyCta] = useState(false)
   const [showExitModal, setShowExitModal] = useState(false)
   const [notificationIndex, setNotificationIndex] = useState(0)
   const [email, setEmail] = useState('')
+  const [emailTouched, setEmailTouched] = useState(false)
   const [formState, setFormState] = useState({ error: '', success: '' })
   const heroRef = useRef(null)
+
+  const emailError = emailTouched && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? content.formError : ''
 
   const filteredFaqs = useMemo(
     () => faqs.filter(([question, answer]) => `${question} ${answer}`.toLowerCase().includes(faqQuery.toLowerCase())),
@@ -194,15 +238,40 @@ function App() {
   }, [])
 
   useEffect(() => {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+
+        if (visible?.target?.id) {
+          setActiveSection(visible.target.id)
+        }
+      },
+      { threshold: [0.25, 0.45, 0.7], rootMargin: '-15% 0px -45% 0px' },
+    )
+
+    ;['home', ...navItems.map(([id]) => id)].forEach((id) => {
+      const element = document.getElementById(id)
+      if (element) {
+        sectionObserver.observe(element)
+      }
+    })
+
+    return () => sectionObserver.disconnect()
+  }, [])
+
+  useEffect(() => {
     const onMouseLeave = (event) => {
-      if (event.clientY <= 0) {
+      if (event.clientY <= 0 && !showExitModal) {
         setShowExitModal(true)
+        trackEvent('exit_intent_triggered', 'mouseleave')
       }
     }
 
     document.addEventListener('mouseout', onMouseLeave)
     return () => document.removeEventListener('mouseout', onMouseLeave)
-  }, [])
+  }, [showExitModal])
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -224,6 +293,7 @@ function App() {
     setFormState({ error: '', success: content.formSuccess })
     trackEvent('subscription_interest_submitted', { email })
     setEmail('')
+    setEmailTouched(false)
   }
 
   return (
@@ -240,13 +310,18 @@ function App() {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-5 text-sm font-medium text-slate-700 md:flex" aria-label="Primary">
-            <a className="transition hover:text-prerna-orange" href="#features">Features</a>
-            <a className="transition hover:text-prerna-orange" href="#how-it-works">How It Works</a>
-            <a className="transition hover:text-prerna-orange" href="#dashboard">Parent Dashboard</a>
-            <a className="transition hover:text-prerna-orange" href="#pricing">Pricing</a>
-            <a className="transition hover:text-prerna-orange" href="#faq">FAQ</a>
-            <a className="transition hover:text-prerna-orange" href="#contact">Contact</a>
+          <nav className="hidden items-center gap-2 text-sm font-medium text-slate-700 md:flex" aria-label="Primary">
+            {navItems.map(([id, label]) => (
+              <a
+                key={id}
+                className={`rounded-full px-3 py-2 transition ${
+                  activeSection === id ? 'bg-prerna-blue-light text-prerna-blue' : 'hover:text-prerna-orange'
+                }`}
+                href={`#${id}`}
+              >
+                {label}
+              </a>
+            ))}
           </nav>
 
           <a className={`${primaryButtonClass} hidden md:inline-flex`} href="#trial-form" onClick={() => trackEvent('cta_click', 'header')}>
@@ -304,14 +379,20 @@ function App() {
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.problemHeadline}</h2>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {problems.map(([icon, title, stat, description]) => (
-                <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-white/15 bg-white/10 p-6 shadow-[0_20px_40px_rgba(0,20,80,0.18)] backdrop-blur-md">
-                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-prerna-orange-light">{icon}</p>
-                  <p className="mt-4 font-semibold text-[#ffd27a]">{stat}</p>
-                  <h3 className="mt-4 font-heading text-2xl">{title}</h3>
-                  <p className="mt-3 leading-7 text-white/85">{description}</p>
-                </MotionArticle>
-              ))}
+              {problems.map(([icon, title, stat, description]) => {
+                const ProblemIcon = iconMap[icon]
+
+                return (
+                  <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-white/15 bg-white/10 p-6 shadow-[0_20px_40px_rgba(0,20,80,0.18)] backdrop-blur-md">
+                    <div className="inline-flex rounded-2xl bg-white/12 p-3 text-prerna-orange-light">
+                      <ProblemIcon className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <p className="mt-4 font-semibold text-[#ffd27a]">{stat}</p>
+                    <h3 className="mt-4 font-heading text-2xl">{title}</h3>
+                    <p className="mt-3 leading-7 text-white/85">{description}</p>
+                  </MotionArticle>
+                )
+              })}
             </div>
           </div>
         </Section>
@@ -321,16 +402,25 @@ function App() {
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.solutionHeadline}</h2>
             <p className="mx-auto mt-4 max-w-3xl text-center text-lg leading-8 text-slate-600">{content.solutionSubheadline}</p>
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {features.map(([number, title, description, badge], index) => (
-                <MotionArticle key={title} whileHover={{ y: -6 }} className={`rounded-[1.6rem] border-t-[5px] bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.10)] ${index % 2 === 0 ? 'border-prerna-blue' : 'border-prerna-orange'}`}>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="font-heading text-2xl text-prerna-blue">{number}</span>
-                    <span className="rounded-full bg-prerna-blue-light px-3 py-2 text-sm font-semibold text-prerna-blue">{badge}</span>
-                  </div>
-                  <h3 className="mt-5 font-heading text-2xl text-slate-900">{title}</h3>
-                  <p className="mt-3 leading-7 text-slate-600">{description}</p>
-                </MotionArticle>
-              ))}
+              {features.map(([icon, number, title, description, badge], index) => {
+                const FeatureIcon = iconMap[icon]
+
+                return (
+                  <MotionArticle key={title} whileHover={{ y: -6 }} className={`rounded-[1.6rem] border-t-[5px] bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.10)] ${index % 2 === 0 ? 'border-prerna-blue' : 'border-prerna-orange'}`}>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <span className="inline-flex rounded-2xl bg-prerna-blue-light p-3 text-prerna-blue">
+                          <FeatureIcon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                        <span className="font-heading text-2xl text-prerna-blue">{number}</span>
+                      </div>
+                      <span className="rounded-full bg-prerna-blue-light px-3 py-2 text-sm font-semibold text-prerna-blue">{badge}</span>
+                    </div>
+                    <h3 className="mt-5 font-heading text-2xl text-slate-900">{title}</h3>
+                    <p className="mt-3 leading-7 text-slate-600">{description}</p>
+                  </MotionArticle>
+                )
+              })}
             </div>
           </div>
         </Section>
@@ -355,12 +445,19 @@ function App() {
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.dashboardHeadline}</h2>
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {dashboardItems.map(([title, description]) => (
-                <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-prerna-blue/10 bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                  <h3 className="font-heading text-2xl text-slate-900">{title}</h3>
-                  <p className="mt-3 leading-7 text-slate-600">{description}</p>
-                </MotionArticle>
-              ))}
+              {dashboardItems.map(([icon, title, description]) => {
+                const DashboardIcon = iconMap[icon]
+
+                return (
+                  <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-prerna-blue/10 bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                    <span className="inline-flex rounded-2xl bg-prerna-orange-light p-3 text-prerna-orange">
+                      <DashboardIcon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <h3 className="mt-4 font-heading text-2xl text-slate-900">{title}</h3>
+                    <p className="mt-3 leading-7 text-slate-600">{description}</p>
+                  </MotionArticle>
+                )
+              })}
             </div>
           </div>
         </Section>
@@ -435,7 +532,13 @@ function App() {
                     <button
                       className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left font-heading text-lg text-prerna-blue"
                       aria-expanded={expanded}
-                      onClick={() => setActiveFaq(expanded ? -1 : index)}
+                      onClick={() => {
+                        const nextIndex = expanded ? -1 : index
+                        setActiveFaq(nextIndex)
+                        if (!expanded) {
+                          trackEvent('faq_expanded', question)
+                        }
+                      }}
                     >
                       <span>{question}</span>
                       <span className="text-2xl">{expanded ? '-' : '+'}</span>
@@ -480,12 +583,14 @@ function App() {
                   autoComplete="email"
                   placeholder={content.emailPlaceholder}
                   value={email}
-                  onFocus={() => trackEvent('subscription_form_started', 'email-focus')}
+                  onFocus={() => {
+                    setEmailTouched(true)
+                    trackEvent('subscription_form_started', 'email-focus')
+                  }}
                   onChange={(event) => {
                     setEmail(event.target.value)
-                    if (formState.error || formState.success) {
-                      setFormState({ error: '', success: '' })
-                    }
+                    setEmailTouched(true)
+                    setFormState({ error: '', success: '' })
                   }}
                   className="rounded-2xl border border-prerna-blue/16 px-4 py-4 text-slate-900 outline-none ring-0 placeholder:text-slate-400 focus:border-prerna-blue"
                 />
@@ -493,7 +598,7 @@ function App() {
                   {content.finalCta}
                 </MotionButton>
                 <p className="text-sm text-slate-500">Parents can use Apni Prerna to create a safer and more productive digital environment for students.</p>
-                {formState.error ? <p className="text-sm font-semibold text-rose-700">{formState.error}</p> : null}
+                {emailError || formState.error ? <p className="text-sm font-semibold text-rose-700">{emailError || formState.error}</p> : null}
                 {formState.success ? <p className="text-sm font-semibold text-emerald-700">{formState.success}</p> : null}
               </form>
 
@@ -554,9 +659,10 @@ function App() {
       <MotionButton
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.98 }}
-        className="fixed bottom-24 right-4 z-40 rounded-full bg-[linear-gradient(135deg,#0066FF,#0052CC)] px-5 py-4 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(0,82,204,0.28)]"
+        className="fixed bottom-24 right-4 z-40 inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#0066FF,#0052CC)] px-5 py-4 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(0,82,204,0.28)]"
         onClick={() => trackEvent('contact_widget_opened', 'floating-button')}
       >
+        <CircleHelp className="h-4 w-4" aria-hidden="true" />
         {content.chat}
       </MotionButton>
 
