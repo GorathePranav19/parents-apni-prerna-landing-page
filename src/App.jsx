@@ -368,7 +368,6 @@ function App() {
                 />
               </div>
               <div className="absolute right-3 top-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Parents</div>
-              <div className="absolute bottom-0 left-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Learning</div>
             </MotionDiv>
           </div>
         </Section>
@@ -461,21 +460,64 @@ function App() {
         </Section>
 
         <Section className="bg-[linear-gradient(180deg,#ffffff_0%,#edf4ff_100%)] py-16 md:py-24">
-          <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
-            <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">Why Parents Choose Apni Prerna</h2>
-            <div className="mt-12 overflow-hidden rounded-[1.8rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-              <div className="hidden grid-cols-[1.5fr_1fr_1fr] gap-4 bg-[linear-gradient(135deg,#0066FF,#FF8800)] px-5 py-4 font-heading text-sm font-bold text-white md:grid">
-                <span>Feature</span>
-                <span>Apni Prerna</span>
-                <span>Typical Tools</span>
-              </div>
-              {comparisonRows.map(([feature, ours, others]) => (
-                <div key={feature} className="grid gap-3 border-t border-slate-200 px-5 py-4 md:grid-cols-[1.5fr_1fr_1fr] md:items-center">
-                  <span className="font-semibold text-slate-900">{feature}</span>
-                  <span className="font-semibold text-emerald-600">{ours}</span>
-                  <span className="text-rose-500">{others}</span>
+          <div className="mx-auto grid w-[min(1200px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+            <div className="lg:sticky lg:top-28">
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Why Apni Prerna</p>
+              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">Why Parents Choose Apni Prerna</h2>
+              <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 md:text-lg">
+                Built for students, designed for parents, and focused on safer digital learning instead of generic device control.
+              </p>
+
+              <div className="mt-8 rounded-[1.8rem] bg-[linear-gradient(135deg,#0066FF,#0052CC)] p-6 text-white shadow-[0_24px_60px_rgba(0,82,204,0.22)]">
+                <p className="text-sm font-semibold text-white/75">What stands out</p>
+                <div className="mt-5 space-y-4">
+                  {[
+                    'Student-focused protection, not generic monitoring',
+                    'Clear parent summaries without technical complexity',
+                    'Safer browsing, distraction control, and reports in one system',
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/14 text-sm font-bold text-white">
+                        +
+                      </span>
+                      <p className="text-sm leading-7 text-white/90">{item}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[2rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+              <div className="grid gap-4 bg-[linear-gradient(135deg,#f4f8ff,#fff7ee)] px-5 py-5 md:grid-cols-[1.4fr_1fr_1fr] md:items-center">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-prerna-blue-dark">Feature Comparison</p>
+                  <p className="mt-2 font-heading text-xl text-slate-950">A better fit for student safety</p>
+                </div>
+                <div className="rounded-[1.2rem] bg-[linear-gradient(135deg,#0066FF,#0052CC)] px-4 py-4 text-white">
+                  <p className="text-xs uppercase tracking-[0.18em] text-white/70">Apni Prerna</p>
+                  <p className="mt-2 font-heading text-lg">Included and focused</p>
+                </div>
+                <div className="rounded-[1.2rem] bg-slate-100 px-4 py-4 text-slate-700">
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Typical Tools</p>
+                  <p className="mt-2 font-heading text-lg text-slate-900">Basic or missing</p>
+                </div>
+              </div>
+
+              <div className="divide-y divide-slate-200">
+                {comparisonRows.map(([feature, ours, others]) => (
+                  <div key={feature} className="grid gap-3 px-5 py-5 md:grid-cols-[1.4fr_1fr_1fr] md:items-center">
+                    <div>
+                      <p className="font-heading text-lg text-slate-950">{feature}</p>
+                    </div>
+                    <div className="rounded-[1.2rem] bg-prerna-blue-light px-4 py-3 text-sm font-semibold text-prerna-blue">
+                      {ours}
+                    </div>
+                    <div className="rounded-[1.2rem] bg-rose-50 px-4 py-3 text-sm font-medium text-rose-600">
+                      {others}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Section>
