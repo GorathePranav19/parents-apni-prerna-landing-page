@@ -126,9 +126,6 @@ const faqs = [
   ['What devices can run Apni Prerna?', 'The website presents Apni Prerna as software for protecting student computers and internet usage in home and learning environments.'],
   ['Can schools and learning centres use it?', 'Yes. The platform can also support schools, educational institutions, learning centres, and digital learning programs.'],
   ['Does it help reduce distractions during study time?', 'Yes. Distraction control is a core feature and is designed to reduce access to gaming, entertainment, and non-learning websites during productive hours.'],
-  ['What is included in the parent dashboard?', 'The dashboard gives access to safety alerts, blocked website details, device status, activity summaries, and weekly usage reports.'],
-  ['Are annual subscription options available?', 'Yes. The website states that annual subscription options are available in addition to the monthly plans.'],
-  ['Who is this product designed for?', 'It is primarily designed for parents of students aged 8 to 18 who want safer and more responsible computer and internet usage.'],
 ]
 
 const notificationNames = [
