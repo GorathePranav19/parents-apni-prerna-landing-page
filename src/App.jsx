@@ -200,9 +200,6 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [faqQuery, setFaqQuery] = useState('')
   const [showStickyCta, setShowStickyCta] = useState(false)
-  const [showExitModal, setShowExitModal] = useState(false)
-  const [showFormModal, setShowFormModal] = useState(false)
-  const [exitDismissed, setExitDismissed] = useState(() => window.sessionStorage.getItem('apni-prerna-exit-dismissed') === 'true')
   const [notificationIndex, setNotificationIndex] = useState(0)
   const heroRef = useRef(null)
 
@@ -251,31 +248,9 @@ function App() {
     return () => sectionObserver.disconnect()
   }, [])
 
-  useEffect(() => {
-    const onMouseLeave = (event) => {
-      if (event.clientY <= 0 && !showExitModal && !exitDismissed) {
-        setShowExitModal(true)
-        trackEvent('exit_intent_triggered', 'mouseleave')
-      }
-    }
-
-    document.addEventListener('mouseout', onMouseLeave)
-    return () => document.removeEventListener('mouseout', onMouseLeave)
-  }, [exitDismissed, showExitModal])
-
-  const dismissExitModal = () => {
-    setShowExitModal(false)
-    setExitDismissed(true)
-    window.sessionStorage.setItem('apni-prerna-exit-dismissed', 'true')
-  }
-
   const openFormModal = (source) => {
-    setShowFormModal(true)
     trackEvent('cta_click', source)
-  }
-
-  const closeFormModal = () => {
-    setShowFormModal(false)
+    window.open(googleFormUrl, '_blank', 'noopener,noreferrer')
   }
 
   useEffect(() => {
@@ -751,16 +726,6 @@ function App() {
         {content.stickyCta}
       </MotionButton>
 
-      <MotionButton
-        whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.98 }}
-        className="fixed bottom-24 right-4 z-40 inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#0066FF,#0052CC)] px-5 py-4 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(0,82,204,0.28)]"
-        onClick={() => trackEvent('contact_widget_opened', 'floating-button')}
-      >
-        <CircleHelp className="h-4 w-4" aria-hidden="true" />
-        {content.chat}
-      </MotionButton>
-
       <AnimatePresence mode="wait">
         <MotionDiv
           key={notificationIndex}
@@ -774,68 +739,6 @@ function App() {
         </MotionDiv>
       </AnimatePresence>
 
-      <AnimatePresence>
-        {showExitModal ? (
-          <MotionDiv initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 grid place-items-center bg-slate-950/55 p-4" role="dialog" aria-modal="true" aria-labelledby="exit-title">
-            <MotionDiv initial={{ scale: 0.94, y: 12 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 8 }} className="relative w-full max-w-xl rounded-[1.8rem] bg-white p-8 shadow-[0_24px_70px_rgba(15,23,42,0.24)]">
-              <button className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-2xl text-slate-700" onClick={dismissExitModal} aria-label="Close offer">
-                x
-              </button>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-prerna-blue-dark">Apni Prerna</p>
-              <h2 id="exit-title" className="mt-4 font-heading text-3xl text-slate-950">{content.exitHeadline}</h2>
-              <p className="mt-4 text-lg leading-8 text-slate-600">{content.exitBody}</p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <button
-                  className={primaryButtonClass}
-                  type="button"
-                  onClick={() => {
-                    dismissExitModal()
-                    openFormModal('exit-modal')
-                  }}
-                >
-                  {content.claimOffer}
-                </button>
-                <button className={secondaryButtonClass} onClick={dismissExitModal}>{content.closeOffer}</button>
-              </div>
-            </MotionDiv>
-          </MotionDiv>
-        ) : null}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {showFormModal ? (
-          <MotionDiv initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 grid place-items-center bg-slate-950/65 p-4" role="dialog" aria-modal="true" aria-labelledby="google-form-title">
-            <MotionDiv initial={{ scale: 0.96, y: 16 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.98, y: 10 }} className="relative flex h-[min(90vh,860px)] w-full max-w-4xl flex-col overflow-hidden rounded-[1.8rem] bg-white shadow-[0_28px_80px_rgba(15,23,42,0.28)]">
-              <button className="absolute right-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-2xl text-slate-700" onClick={closeFormModal} aria-label="Close subscription form">
-                x
-              </button>
-              <div className="border-b border-slate-200 px-6 py-5 pr-14">
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-prerna-blue-dark">Apni Prerna</p>
-                <h2 id="google-form-title" className="mt-2 font-heading text-2xl text-slate-950">Start Subscription</h2>
-                <p className="mt-2 text-sm text-slate-600">Fill the form below and our team will connect with you.</p>
-              </div>
-              <div className="flex-1 bg-slate-50 p-3 sm:p-4">
-                <iframe
-                  src={googleFormUrl}
-                  title="Apni Prerna subscription form"
-                  className="h-full min-h-[520px] w-full rounded-[1.2rem] border border-slate-200 bg-white"
-                />
-              </div>
-              <div className="flex flex-col gap-3 border-t border-slate-200 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm text-slate-500">If the form does not load inside the popup, open it in a new tab.</p>
-                <a
-                  className={secondaryButtonClass}
-                  href={googleFormUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Open Form in New Tab
-                </a>
-              </div>
-            </MotionDiv>
-          </MotionDiv>
-        ) : null}
-      </AnimatePresence>
     </div>
   )
 }
