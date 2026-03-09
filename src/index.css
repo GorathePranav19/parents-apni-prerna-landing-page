@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-prerna-violet: #6d5efc;
-  --color-prerna-amber: #ffb347;
-  --color-prerna-page: #f3f4f8;
-  --font-heading: "Sora", sans-serif;
-  --font-body: "Manrope", sans-serif;
-  --shadow-prerna-soft: 0 22px 40px rgba(23, 27, 63, 0.08);
-  --shadow-prerna-button: 0 18px 30px rgba(109, 94, 252, 0.28);
+  --color-prerna-blue: #0066ff;
+  --color-prerna-blue-dark: #0052cc;
+  --color-prerna-blue-light: #e6f0ff;
+  --color-prerna-orange: #ff8800;
+  --color-prerna-orange-dark: #e67700;
+  --color-prerna-orange-light: #fff0e6;
+  --color-prerna-page: #f8fbff;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --shadow-prerna-soft: 0 20px 44px rgba(0, 52, 128, 0.08);
+  --shadow-prerna-button: 0 18px 30px rgba(0, 102, 255, 0.22);
 }
 
 @layer base {
@@ -20,8 +24,8 @@
     min-width: 320px;
     margin: 0;
     background:
-      radial-gradient(circle at top, rgba(109, 94, 252, 0.12), transparent 24%),
-      linear-gradient(180deg, #f4f5f8 0%, #eef1f7 100%);
+      radial-gradient(circle at top, rgba(0, 102, 255, 0.12), transparent 22%),
+      linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
     color: #111827;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
