@@ -691,7 +691,7 @@ function App() {
             <p>Mumbai, Maharashtra, India</p>
           </div>
         </div>
-        <div className="mx-auto mt-8 w-[min(1200px,calc(100%-2rem))] border-t border-white/10 pt-6 text-sm text-white/65">
+        <div className="mx-auto mt-8 w-[min(1200px,calc(100%-2rem))] border-t border-white/10 pt-6 text-center text-sm text-white/65">
           Copyright 2026 Apni Prerna. A product of Apni Pathshala. All rights reserved.
         </div>
       </footer>
