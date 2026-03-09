@@ -279,29 +279,20 @@ function App() {
             </MotionDiv>
 
             <MotionDiv initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="relative min-h-[34rem]">
-              <div className="absolute inset-x-0 top-4 rounded-[2rem] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,#0052CC,#0066FF)] p-8 text-white shadow-[0_26px_70px_rgba(0,46,125,0.24)]">
-                <span className="inline-flex rounded-full bg-white/95 px-3 py-2 text-sm font-semibold text-prerna-blue">Safe Learning Zone</span>
-                <h2 className="mt-5 font-heading text-3xl">Protection for Student Computers</h2>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-3xl border border-white/15 bg-white/8 p-4">
-                    <strong className="block text-4xl font-heading">Blocked</strong>
-                    <span className="text-sm text-white/80">harmful websites and unsafe links</span>
-                  </div>
-                  <div className="rounded-3xl border border-white/15 bg-white/8 p-4">
-                    <strong className="block text-4xl font-heading">Focused</strong>
-                    <span className="text-sm text-white/80">learning environment with fewer distractions</span>
+              <div className="absolute inset-x-0 top-4 overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,#0052CC,#0066FF)] p-4 text-white shadow-[0_26px_70px_rgba(0,46,125,0.24)] md:p-6">
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-3 px-2">
+                  <span className="inline-flex rounded-full bg-white/95 px-3 py-2 text-sm font-semibold text-prerna-blue">Live Parent Dashboard</span>
+                  <div className="flex flex-wrap gap-2 text-sm text-white/85">
+                    {['Website blocking', 'Safety summaries', 'Focus controls'].map((item) => (
+                      <span key={item} className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5">{item}</span>
+                    ))}
                   </div>
                 </div>
-                <MotionDiv animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="mx-auto mt-10 grid h-56 w-56 place-items-center rounded-full border border-white/20 shadow-[inset_0_0_0_20px_rgba(255,255,255,0.06)]">
-                  <div className="grid h-28 w-28 place-items-center rounded-full bg-[linear-gradient(135deg,#ffffff,#d8e8ff)] font-heading text-xl font-bold text-prerna-blue">
-                    Safe
-                  </div>
-                </MotionDiv>
-                <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/85">
-                  {['Website blocking', 'Safety summaries', 'Focus controls'].map((item) => (
-                    <span key={item} className="rounded-full border border-white/20 bg-white/10 px-4 py-2">{item}</span>
-                  ))}
-                </div>
+                <img
+                  src="/main-dashboard.png"
+                  alt="Apni Prerna dashboard showing student safety metrics, filters, and parent monitoring tools"
+                  className="w-full rounded-[1.5rem] border border-white/15 object-cover shadow-[0_18px_40px_rgba(15,23,42,0.18)]"
+                />
               </div>
               <div className="absolute right-3 top-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Parents</div>
               <div className="absolute bottom-0 left-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Learning</div>
