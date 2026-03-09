@@ -1,0 +1,16 @@
+{
+  "name": "Apni Prerna",
+  "short_name": "Apni Prerna",
+  "description": "Student safety software for safer browsing, distraction control, and parent visibility.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066FF",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -212,7 +212,7 @@ function App() {
   )
 
   useEffect(() => {
-    document.title = 'Apni Prerna - Student Safety Software'
+    document.title = 'Apni Prerna - Student Safety & Parental Control Software India'
   }, [])
 
   useEffect(() => {
