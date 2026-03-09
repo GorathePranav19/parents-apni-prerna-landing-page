@@ -43,10 +43,6 @@ const content = {
   finalCta: 'Start Subscription',
   contactCta: 'Contact for Setup Help',
   footerTagline: '',
-  emailLabel: 'Parent email',
-  emailPlaceholder: 'name@example.com',
-  formSuccess: 'Your request has been received. We will contact you shortly.',
-  formError: 'Enter a valid email address.',
   stickyCta: 'Start Subscription',
   chat: 'Need Help? Contact Us',
   exitHeadline: 'Before You Leave',
@@ -212,12 +208,7 @@ function App() {
   const [showFormModal, setShowFormModal] = useState(false)
   const [exitDismissed, setExitDismissed] = useState(() => window.sessionStorage.getItem('apni-prerna-exit-dismissed') === 'true')
   const [notificationIndex, setNotificationIndex] = useState(0)
-  const [email, setEmail] = useState('')
-  const [emailTouched, setEmailTouched] = useState(false)
-  const [formState, setFormState] = useState({ error: '', success: '' })
   const heroRef = useRef(null)
-
-  const emailError = emailTouched && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? content.formError : ''
 
   const filteredFaqs = useMemo(
     () => faqs.filter(([question, answer]) => `${question} ${answer}`.toLowerCase().includes(faqQuery.toLowerCase())),
@@ -298,21 +289,6 @@ function App() {
 
     return () => window.clearInterval(interval)
   }, [])
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-
-    if (!isValidEmail) {
-      setFormState({ error: content.formError, success: '' })
-      return
-    }
-
-    setFormState({ error: '', success: content.formSuccess })
-    trackEvent('subscription_interest_submitted', { email })
-    setEmail('')
-    setEmailTouched(false)
-  }
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,102,255,0.12),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbff_38%,#ffffff_100%)] text-slate-900">
@@ -601,35 +577,23 @@ function App() {
             </div>
 
             <div id="trial-form" className="rounded-[1.8rem] bg-white/96 p-6 text-slate-900 shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
-              <form className="grid gap-4" onSubmit={handleSubmit}>
-                <label htmlFor="email" className="font-heading text-base text-slate-900">{content.emailLabel}</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder={content.emailPlaceholder}
-                  value={email}
-                  onFocus={() => {
-                    setEmailTouched(true)
-                    trackEvent('subscription_form_started', 'email-focus')
-                  }}
-                  onChange={(event) => {
-                    setEmail(event.target.value)
-                    setEmailTouched(true)
-                    setFormState({ error: '', success: '' })
-                  }}
-                  className="rounded-2xl border border-prerna-blue/16 px-4 py-4 text-slate-900 outline-none ring-0 placeholder:text-slate-400 focus:border-prerna-blue"
-                />
-                <MotionButton whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className={`${primaryButtonClass} w-full min-h-14 text-base`} type="submit">
+              <div className="grid gap-4">
+                <p className="font-heading text-base text-slate-900">Start your subscription request</p>
+                <p className="text-sm leading-7 text-slate-600">Open the subscription form and share your details. Our team will contact you after submission.</p>
+                <MotionButton
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${primaryButtonClass} w-full min-h-14 text-base`}
+                  type="button"
+                  onClick={() => openFormModal('contact-card')}
+                >
                   {content.finalCta}
                 </MotionButton>
-                <p className="text-sm text-slate-500">Parents can use Apni Prerna to create a safer and more productive digital environment for students.</p>
-                {emailError || formState.error ? <p className="text-sm font-semibold text-rose-700">{emailError || formState.error}</p> : null}
-                {formState.success ? <p className="text-sm font-semibold text-emerald-700">{formState.success}</p> : null}
-              </form>
+                <button className={`mt-1 w-full ${secondaryButtonClass}`} type="button" onClick={() => openFormModal('contact-help')}>
+                  {content.contactCta}
+                </button>
+              </div>
 
-              <a className={`mt-4 w-full ${secondaryButtonClass}`} href="#footer">{content.contactCta}</a>
               <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold text-prerna-blue">
                 {['Student protection', 'Learning support', 'Parent summaries', 'Responsible digital habits'].map((item) => (
                   <span key={item} className="rounded-full bg-prerna-blue-light px-3 py-2">{item}</span>
