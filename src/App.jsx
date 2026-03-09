@@ -20,10 +20,10 @@ const content = {
   navCta: 'Start Subscription',
   heroHeadline: 'Protect Your Child in the Digital World',
   heroSubheadline:
-    'Apni Prerna Safe Zone helps parents keep children safe online by blocking harmful websites, reducing distractions, and supporting responsible device use.',
+    'Apni Prerna creates a safe online environment for students by blocking harmful websites, reducing distractions, and helping children use technology responsibly.',
   heroDescription:
-    'Built for families and schools, Apni Prerna creates a safer digital space where students can focus on learning without unsafe content or risky downloads.',
-  trustLine: 'Student safety software | Parent-friendly dashboard | Built for responsible digital use',
+    'Built for families, schools, and learning environments, Apni Prerna creates a safer digital space where students can focus on learning without exposure to unsafe content, risky downloads, or unnecessary distractions.',
+  trustLine: 'Student safety software | Safe online environment | Responsible technology use',
   primaryCta: 'Start Protecting My Child',
   secondaryCta: 'See How It Works',
   microCopy: 'Simple setup | Parent-focused controls | Safer learning environment',
@@ -31,11 +31,12 @@ const content = {
   problemHeadline: 'The Internet Is Not Always Safe for Children',
   solutionHeadline: 'Student Safety Software Designed for Everyday Protection',
   solutionSubheadline:
-    'Apni Prerna gives parents simple controls and clear visibility for safer learning.',
-  howHeadline: 'How Apni Prerna Works',
+    'Smart controls and parent visibility that help children use computers safely and responsibly.',
+  howHeadline: 'Get Started in 3 Simple Steps',
+  howSubheadline: 'Setting up Apni Prerna takes less than 5 minutes.',
   dashboardHeadline: 'Parent Dashboard Visibility Without Complexity',
-  pricingHeadline: 'Choose a Plan That Fits Your Family',
-  pricingSubheadline: 'Monthly plans per child with annual options available',
+  pricingHeadline: 'Simple, Transparent Pricing',
+  pricingSubheadline: 'Per child, per month. Cancel anytime.',
   faqHeadline: 'Frequently Asked Questions',
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
@@ -63,18 +64,17 @@ const problems = [
 ]
 
 const features = [
-  ['Shield', '01', 'Harmful Website Blocking', 'Blocks inappropriate websites, malware pages, adult content, gambling pages, and unsafe downloads.', 'Core Safety'],
-  ['Blocks', '02', 'Distraction Control', 'Restricts games, social media, and entertainment platforms during study time.', 'Focus Time'],
-  ['MonitorCheck', '03', 'Safe Device Monitoring', 'Checks device safety and helps ensure unsafe programs are not active.', 'Device Health'],
-  ['SearchCheck', '04', 'Learning-Focused Environment', 'Keeps computer use centered on learning and student work.', 'Learning First'],
-  ['ClipboardList', '05', 'Activity Summary for Parents', 'Shows simple usage summaries so parents can understand device use.', 'Parent Visibility'],
-  ['Bot', '06', 'Smart Safety Policies', 'Applies rules that keep device use safe and productive.', 'Smart Rules'],
+  ['Shield', '01', 'Harmful Website Blocking', "Automatically blocks adult content, gambling, malware, and unsafe downloads before your child sees them.", 'Core Safety'],
+  ['Blocks', '02', 'Screen Time Control', 'Set daily limits, define study hours, and activate bedtime internet lock all from your parent account.', 'Parent Control'],
+  ['ClipboardList', '03', 'Weekly Safety Reports', "Receive clear weekly summaries of your child's browsing activity, learning time, and safety score.", 'Weekly Summary'],
+  ['Bell', '04', 'Real-Time Alerts', 'Get instant notifications when your child encounters unsafe websites, suspicious downloads, or malware threats.', 'Instant Alerts'],
+  ['SearchCheck', '05', 'Safe Search Filtering', 'Automatically filters explicit results on Google, Bing, and YouTube so your child only sees safe content.', 'Filtered Search'],
 ]
 
 const steps = [
-  ['01', 'Create an Account', 'Sign up and choose the plan that fits your needs.', 'Step 1'],
-  ['02', "Install on the Child's Computer", 'Install Apni Prerna on the student device.', 'Step 2'],
-  ['03', 'Monitor and Protect Automatically', 'Protection runs in the background while parents review alerts and summaries.', 'Step 3'],
+  ['01', 'Create a Parent Account', 'Sign up in under a minute with your email.', 'Step 1'],
+  ['02', "Install on Your Child's Computer", 'Quick, guided installation with no tech skills needed.', 'Step 2'],
+  ['03', 'Automatic Protection Begins', 'The software automatically protects the device and ensures safe usage.', 'Step 3'],
 ]
 
 const dashboardItems = [
@@ -98,27 +98,24 @@ const comparisonRows = [
 const plans = [
   {
     name: 'Basic',
-    price: 'Rs. 99',
-    cadence: '/month per child',
-    billed: 'Annual options available',
-    features: ['Harmful website blocking', 'Distraction control', 'Basic safety monitoring'],
+    monthly: 99,
+    annual: 79,
+    features: ['Harmful website blocking', 'Safe search filtering', 'Basic protection'],
   },
   {
     name: 'Standard',
-    price: 'Rs. 199',
-    cadence: '/month per child',
-    billed: 'Annual options available',
+    monthly: 199,
+    annual: 159,
     badge: 'Recommended',
     featured: true,
-    features: ['Everything in Basic', 'Device monitoring', 'Safety alerts', 'Activity summaries'],
+    features: ['Everything in Basic', 'Screen time control', 'Safety alerts', 'Weekly reports'],
   },
   {
     name: 'Premium',
-    price: 'Rs. 349',
-    cadence: '/month per child',
-    billed: 'Annual options available',
+    monthly: 349,
+    annual: 279,
     badge: 'Full Access',
-    features: ['Everything in Standard', 'Parent dashboard access', 'Weekly reports', 'Priority support'],
+    features: ['Everything in Standard', 'Parent dashboard', 'Advanced reports', 'Priority support'],
   },
 ]
 
@@ -145,8 +142,8 @@ const notificationNames = [
 const navItems = [
   ['features', 'Features'],
   ['how-it-works', 'How It Works'],
-  ['dashboard', 'Dashboard'],
   ['pricing', 'Pricing'],
+  ['dashboard', 'Dashboard'],
   ['faq', 'FAQ'],
   ['contact', 'Contact'],
 ]
@@ -205,6 +202,7 @@ function Section({ id, className = '', children }) {
 function App() {
   const [activeFaq, setActiveFaq] = useState(0)
   const [activeSection, setActiveSection] = useState('home')
+  const [annualBilling, setAnnualBilling] = useState(false)
   const [faqQuery, setFaqQuery] = useState('')
   const [showStickyCta, setShowStickyCta] = useState(false)
   const [showExitModal, setShowExitModal] = useState(false)
@@ -331,14 +329,26 @@ function App() {
       </header>
 
       <main>
-        <Section id="home" className="py-16 md:py-24">
-          <div ref={heroRef} className="mx-auto grid w-[min(1200px,calc(100%-2rem))] gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <Section id="home" className="overflow-hidden py-12 md:py-20">
+          <div ref={heroRef} className="mx-auto grid w-[min(1200px,calc(100%-2rem))] gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
             <MotionDiv initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <p className="mb-4 text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Apni Prerna Safe Zone</p>
-              <h1 className="font-heading text-4xl leading-tight text-slate-950 md:text-6xl">{content.heroHeadline}</h1>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-prerna-blue/10 bg-white/80 px-4 py-2 text-sm font-semibold text-prerna-blue shadow-[0_16px_35px_rgba(0,102,255,0.08)]">
+                <Shield className="h-4 w-4" aria-hidden="true" />
+                Apni Prerna Safe Zone
+              </div>
+              <h1 className="font-heading text-4xl leading-tight text-slate-950 md:text-6xl">
+                Protect Your Child in the{' '}
+                <span className="bg-[linear-gradient(135deg,#0066FF,#FF8800)] bg-clip-text text-transparent">Digital World</span>
+              </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-700 md:text-xl">{content.heroSubheadline}</p>
-              <p className="mt-5 text-sm font-semibold text-slate-500">{content.trustLine}</p>
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">{content.heroDescription}</p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {content.trustLine.split(' | ').map((item) => (
+                  <span key={item} className="rounded-full bg-prerna-blue-light px-4 py-2 text-sm font-semibold text-prerna-blue-dark">
+                    {item}
+                  </span>
+                ))}
+              </div>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <MotionA whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className={`${primaryButtonClass} min-h-14 px-7 text-base`} href="#trial-form">
                   {content.primaryCta}
@@ -348,13 +358,29 @@ function App() {
                 </MotionA>
               </div>
               <p className="mt-3 text-sm text-slate-500">{content.microCopy}</p>
-              <div className="mt-6 rounded-3xl border border-prerna-blue/10 bg-prerna-blue-light/70 p-4 text-sm font-semibold text-prerna-blue-dark shadow-[0_16px_40px_rgba(0,102,255,0.08)]">
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-[1.6rem] border border-slate-200 bg-white/90 p-4 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm text-slate-500">Blocks</p>
+                  <p className="mt-2 font-heading text-2xl text-slate-950">Unsafe sites</p>
+                </div>
+                <div className="rounded-[1.6rem] border border-slate-200 bg-white/90 p-4 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm text-slate-500">Reduces</p>
+                  <p className="mt-2 font-heading text-2xl text-slate-950">Distractions</p>
+                </div>
+                <div className="rounded-[1.6rem] border border-slate-200 bg-white/90 p-4 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
+                  <p className="text-sm text-slate-500">Helps</p>
+                  <p className="mt-2 font-heading text-2xl text-slate-950">Responsible use</p>
+                </div>
+              </div>
+              <div className="mt-6 rounded-[1.8rem] border border-prerna-blue/10 bg-[linear-gradient(135deg,rgba(230,240,255,0.8),rgba(255,240,230,0.8))] p-4 text-sm font-semibold text-prerna-blue-dark shadow-[0_16px_40px_rgba(0,102,255,0.08)]">
                 {content.socialProof}
               </div>
             </MotionDiv>
 
-            <MotionDiv initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="relative min-h-[34rem]">
-              <div className="absolute inset-x-0 top-4 overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,#0052CC,#0066FF)] p-4 text-white shadow-[0_26px_70px_rgba(0,46,125,0.24)] md:p-6">
+            <MotionDiv initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65, delay: 0.08 }} className="relative min-h-[38rem]">
+              <div className="absolute -left-10 top-10 h-40 w-40 rounded-full bg-prerna-orange/20 blur-3xl" aria-hidden="true" />
+              <div className="absolute right-0 top-0 h-56 w-56 rounded-full bg-prerna-blue/20 blur-3xl" aria-hidden="true" />
+              <div className="absolute inset-x-0 top-6 overflow-hidden rounded-[2.2rem] border border-white/20 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_32%),linear-gradient(145deg,#0052CC,#0066FF)] p-4 text-white shadow-[0_30px_80px_rgba(0,46,125,0.24)] md:p-6">
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3 px-2">
                   <span className="inline-flex rounded-full bg-white/95 px-3 py-2 text-sm font-semibold text-prerna-blue">Live Parent Dashboard</span>
                   <div className="flex flex-wrap gap-2 text-sm text-white/85">
@@ -369,8 +395,15 @@ function App() {
                   className="w-full rounded-[1.5rem] border border-white/15 object-cover shadow-[0_18px_40px_rgba(15,23,42,0.18)]"
                 />
               </div>
-              <div className="absolute right-3 top-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Parents</div>
-              <div className="absolute bottom-0 left-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Learning</div>
+              <div className="absolute right-2 top-0 rounded-full bg-[linear-gradient(135deg,#FF8800,#E67700)] px-4 py-2 text-sm font-semibold text-white shadow-[0_18px_32px_rgba(255,136,0,0.25)]">For Parents</div>
+              <div className="absolute -left-2 bottom-8 rounded-[1.4rem] bg-white p-4 text-slate-900 shadow-[0_22px_50px_rgba(15,23,42,0.16)]">
+                <p className="text-sm text-slate-500">Safe Learning Zone</p>
+                <p className="mt-1 font-heading text-xl">Focused device use</p>
+              </div>
+              <div className="absolute bottom-0 right-8 rounded-[1.4rem] bg-white p-4 text-slate-900 shadow-[0_22px_50px_rgba(15,23,42,0.16)]">
+                <p className="text-sm text-slate-500">Parent visibility</p>
+                <p className="mt-1 font-heading text-xl">Alerts and reports</p>
+              </div>
             </MotionDiv>
           </div>
         </Section>
@@ -428,6 +461,7 @@ function App() {
         <Section id="how-it-works" className="bg-slate-50 py-16 md:py-24">
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.howHeadline}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-center text-lg leading-8 text-slate-600">{content.howSubheadline}</p>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {steps.map(([number, title, description, badge]) => (
                 <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
@@ -441,20 +475,24 @@ function App() {
           </div>
         </Section>
 
-        <Section id="dashboard" className="bg-white py-16 md:py-24">
+        <Section id="dashboard" className="bg-slate-950 py-16 text-white md:py-24">
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
-            <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.dashboardHeadline}</h2>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-orange-light">Dashboard</p>
+              <h2 className="mt-4 font-heading text-3xl leading-tight md:text-5xl">{content.dashboardHeadline}</h2>
+              <p className="mt-4 text-lg leading-8 text-white/70">A cleaner way for parents to understand safety, activity, and student device status.</p>
+            </div>
             <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {dashboardItems.map(([icon, title, description]) => {
                 const DashboardIcon = iconMap[icon]
 
                 return (
-                  <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-prerna-blue/10 bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                    <span className="inline-flex rounded-2xl bg-prerna-orange-light p-3 text-prerna-orange">
+                  <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.7rem] border border-white/10 bg-white/6 p-6 shadow-[0_20px_45px_rgba(0,0,0,0.18)] backdrop-blur-md">
+                    <span className="inline-flex rounded-2xl bg-white/10 p-3 text-prerna-orange">
                       <DashboardIcon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <h3 className="mt-4 font-heading text-2xl text-slate-900">{title}</h3>
-                    <p className="mt-3 leading-7 text-slate-600">{description}</p>
+                    <h3 className="mt-4 font-heading text-2xl text-white">{title}</h3>
+                    <p className="mt-3 leading-7 text-white/70">{description}</p>
                   </MotionArticle>
                 )
               })}
@@ -482,23 +520,45 @@ function App() {
           </div>
         </Section>
 
-        <Section id="pricing" className="bg-white py-16 md:py-24">
+        <Section id="pricing" className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] py-16 md:py-24">
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.pricingHeadline}</h2>
             <p className="mx-auto mt-4 max-w-3xl text-center text-lg leading-8 text-slate-600">{content.pricingSubheadline}</p>
+            <div className="mt-8 flex justify-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-prerna-blue/10 bg-white p-1 shadow-[0_14px_30px_rgba(15,23,42,0.08)]">
+                <button
+                  className={`rounded-full px-5 py-2 text-sm font-semibold transition ${annualBilling ? 'text-slate-500' : 'bg-[linear-gradient(135deg,#0066FF,#0052CC)] text-white'}`}
+                  onClick={() => setAnnualBilling(false)}
+                  type="button"
+                >
+                  Monthly
+                </button>
+                <button
+                  className={`rounded-full px-5 py-2 text-sm font-semibold transition ${annualBilling ? 'bg-[linear-gradient(135deg,#0066FF,#0052CC)] text-white' : 'text-slate-500'}`}
+                  onClick={() => setAnnualBilling(true)}
+                  type="button"
+                >
+                  Annual Save 20%
+                </button>
+              </div>
+            </div>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {plans.map((plan) => (
-                <MotionArticle key={plan.name} whileHover={{ y: -6 }} className={`rounded-[1.7rem] border-t-[5px] p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)] ${plan.featured ? 'scale-100 border-prerna-orange bg-[linear-gradient(180deg,#fffaf3,#ffffff)] lg:scale-[1.03]' : 'border-prerna-blue bg-white'}`}>
+                <MotionArticle key={plan.name} whileHover={{ y: -8 }} className={`rounded-[1.9rem] border p-7 shadow-[0_24px_55px_rgba(0,63,157,0.10)] ${plan.featured ? 'scale-100 border-prerna-orange bg-[linear-gradient(180deg,#fffaf3,#ffffff)] lg:scale-[1.04]' : 'border-slate-200 bg-white'}`}>
                   {plan.badge ? <span className={`inline-flex rounded-full px-3 py-2 text-sm font-semibold ${plan.featured ? 'bg-prerna-blue text-white' : 'bg-prerna-blue-light text-prerna-blue'}`}>{plan.badge}</span> : null}
                   <h3 className="mt-5 font-heading text-2xl text-slate-900">{plan.name}</h3>
                   <div className="mt-5 flex items-end gap-2">
-                    <strong className="font-heading text-5xl text-slate-950">{plan.price}</strong>
-                    <span className="pb-2 text-slate-600">{plan.cadence}</span>
+                    <strong className="font-heading text-5xl text-slate-950">Rs. {annualBilling ? plan.annual : plan.monthly}</strong>
+                    <span className="pb-2 text-slate-600">/child /month</span>
                   </div>
-                  <p className="mt-2 text-slate-600">{plan.billed}</p>
+                  <p className="mt-2 text-slate-600">{annualBilling ? `Billed annually at Rs. ${plan.annual * 12}` : 'Per child, per month. Cancel anytime.'}</p>
+                  {annualBilling ? <p className="mt-1 text-sm font-semibold text-emerald-600">Save Rs. {(plan.monthly - plan.annual) * 12} yearly</p> : null}
                   <ul className="mt-6 space-y-3 text-slate-700">
                     {plan.features.map((item) => (
-                      <li key={item}>- {item}</li>
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-prerna-orange" />
+                        <span>{item}</span>
+                      </li>
                     ))}
                   </ul>
                   <a className={`mt-8 w-full ${plan.featured ? primaryButtonClass : secondaryButtonClass}`} href="#trial-form">
