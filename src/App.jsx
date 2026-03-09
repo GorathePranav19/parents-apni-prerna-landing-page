@@ -41,7 +41,6 @@ const content = {
   finalSubheadline:
     'Start using Apni Prerna to block harmful websites, reduce distractions, and maintain a productive digital environment for your child.',
   finalCta: 'Start Subscription',
-  contactCta: 'Contact for Setup Help',
   footerTagline: '',
   stickyCta: 'Start Subscription',
   chat: 'Need Help? Contact Us',
@@ -589,9 +588,6 @@ function App() {
                 >
                   {content.finalCta}
                 </MotionButton>
-                <button className={`mt-1 w-full ${secondaryButtonClass}`} type="button" onClick={() => openFormModal('contact-help')}>
-                  {content.contactCta}
-                </button>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold text-prerna-blue">
