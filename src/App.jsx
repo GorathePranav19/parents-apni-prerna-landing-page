@@ -62,6 +62,7 @@ const features = [
   ['ClipboardList', '03', 'Provides simple activity summaries for parents', 'Receive clear summaries of device activity without technical complexity.', 'Parent Reports'],
   ['SearchCheck', '04', 'Encourages responsible digital habits for children', 'Help children build safe and focused technology habits over time.', 'Healthy Habits'],
   ['MonitorCheck', '05', 'Designed specifically for learning environments', 'Made for families, schools, and learning communities instead of generic device monitoring.', 'Learning First'],
+  ['Bot', '06', 'Coming Soon', 'More parent and educator tools are being prepared to make digital learning safer, clearer, and more effective.', 'Next Update'],
 ]
 
 const steps = [
