@@ -71,10 +71,10 @@ const steps = [
 ]
 
 const dashboardItems = [
-  ['LayoutDashboard', 'Website Monitoring', 'See which sites are visited and how long they are used.'],
-  ['Shield', 'Blocked Websites', 'Automatically stops harmful or unsafe websites.'],
-  ['ClipboardList', 'Activity Reports', 'Understand daily and weekly browsing patterns.'],
-  ['ChartColumn', 'Usage History', 'See which sites are visited and how long they are used.'],
+  ['LayoutDashboard', 'Website Monitoring', 'See which websites are being visited, how often they are accessed, and how much time is spent on each site. This helps track browsing behavior clearly and gives a better understanding of overall digital usage.'],
+  ['Shield', 'Blocked Websites', 'Automatically blocks harmful, unsafe, or distracting websites using predefined rules. This creates a safer digital environment and helps students stay focused on productive learning.'],
+  ['ClipboardList', 'Activity Reports', 'View daily and weekly browsing insights through clear reports. These reports help identify activity patterns, top websites, blocked attempts, and overall engagement trends.'],
+  ['ChartColumn', 'Usage History', 'Track past browsing activity in a simple and organized way. Review which websites were visited, when they were accessed, and how long they were used to understand long-term usage patterns.'],
 ]
 
 const dashboardPreviews = {
@@ -92,6 +92,11 @@ const dashboardPreviews = {
     image: '/report-photo.jpeg',
     alt: 'Activity reports dashboard preview',
     label: 'Learning report view',
+  },
+  'Usage History': {
+    image: '/usage-history.jpeg',
+    alt: 'Usage history dashboard preview',
+    label: 'Long-term usage history',
   },
 }
 
@@ -233,6 +238,7 @@ function Section({ id, className = '', children }) {
 function App() {
   const [activeFaq, setActiveFaq] = useState(0)
   const [activeSection, setActiveSection] = useState('home')
+  const [activeDashboardTab, setActiveDashboardTab] = useState(dashboardItems[0][1])
   const [faqQuery, setFaqQuery] = useState('')
   const [showStickyCta, setShowStickyCta] = useState(false)
   const heroRef = useRef(null)
@@ -482,37 +488,74 @@ function App() {
             <p className="mx-auto mt-4 max-w-4xl text-center text-lg leading-8 text-slate-600">
               Apni Prerna provides parents with a simple dashboard that shows how the computer is being used. Parents can monitor browsing activity, detect unsafe websites, and guide children toward safer digital habits.
             </p>
-            <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-              <div className="grid gap-6 md:grid-cols-2">
-                {dashboardItems.map(([icon, title, description]) => {
+            <div className="mt-12 overflow-hidden rounded-[2rem] border border-prerna-blue/10 bg-[linear-gradient(135deg,#f7fbff,#fff8f0)] p-5 shadow-[0_24px_55px_rgba(0,63,157,0.08)] md:p-8">
+              <div role="tablist" aria-label="Parent dashboard features" className="flex flex-nowrap gap-3 overflow-x-auto pb-2">
+                {dashboardItems.map(([icon, title]) => {
                   const DashboardIcon = iconMap[icon]
+                  const isActive = activeDashboardTab === title
 
                   return (
-                    <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-prerna-blue/10 bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                      <span className="inline-flex rounded-2xl bg-prerna-orange-light p-3 text-prerna-orange">
-                        <DashboardIcon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <h3 className="mt-4 font-heading text-2xl text-slate-900">{title}</h3>
-                      <p className="mt-3 leading-7 text-slate-600">{description}</p>
-                    </MotionArticle>
+                    <button
+                      key={title}
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-controls={`dashboard-panel-${title.replace(/\s+/g, '-').toLowerCase()}`}
+                      id={`dashboard-tab-${title.replace(/\s+/g, '-').toLowerCase()}`}
+                      type="button"
+                      onClick={() => setActiveDashboardTab(title)}
+                      className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition ${
+                        isActive
+                          ? 'border-prerna-blue bg-prerna-blue text-white shadow-[0_12px_28px_rgba(0,102,255,0.24)]'
+                          : 'border-prerna-blue/10 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-prerna-blue/40 hover:text-prerna-blue'
+                      }`}
+                    >
+                      <DashboardIcon className="h-4 w-4" aria-hidden="true" />
+                      {title}
+                    </button>
                   )
                 })}
               </div>
-              <div className="grid gap-5">
-                <div className="overflow-hidden rounded-[1.8rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                  <img
-                    src="/student-data-1.jpg"
-                    alt="Student data dashboard screenshot showing browsing activity insights"
-                    className="w-full object-cover"
-                  />
-                </div>
-                <div className="overflow-hidden rounded-[1.8rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                  <img
-                    src="/student-data-2.jpg"
-                    alt="Student data dashboard screenshot showing website and safety activity"
-                    className="w-full object-cover"
-                  />
-                </div>
+
+              <div className="mt-8 grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+                <AnimatePresence mode="wait">
+                  {dashboardItems
+                    .filter(([, title]) => title === activeDashboardTab)
+                    .map(([icon, title, description]) => {
+                      const DashboardIcon = iconMap[icon]
+                      const preview = dashboardPreviews[title]
+
+                      return (
+                        <MotionDiv
+                          key={title}
+                          role="tabpanel"
+                          id={`dashboard-panel-${title.replace(/\s+/g, '-').toLowerCase()}`}
+                          aria-labelledby={`dashboard-tab-${title.replace(/\s+/g, '-').toLowerCase()}`}
+                          initial={{ opacity: 0, x: -24 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 24 }}
+                          transition={{ duration: 0.32, ease: 'easeOut' }}
+                          className="grid gap-8 lg:col-span-2 lg:grid-cols-[0.92fr_1.08fr] lg:items-center"
+                        >
+                          <div className="rounded-[1.8rem] border border-prerna-blue/10 bg-white p-7 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                            <span className="inline-flex rounded-2xl bg-prerna-orange-light p-3 text-prerna-orange">
+                              <DashboardIcon className="h-6 w-6" aria-hidden="true" />
+                            </span>
+                            <p className="mt-5 text-sm font-bold uppercase tracking-[0.2em] text-prerna-blue-dark">{preview.label}</p>
+                            <h3 className="mt-3 font-heading text-3xl text-slate-950 md:text-4xl">{title}</h3>
+                            <p className="mt-4 text-base leading-8 text-slate-600 md:text-lg">{description}</p>
+                          </div>
+
+                          <div className="overflow-hidden rounded-[1.8rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                            <img
+                              src={preview.image}
+                              alt={preview.alt}
+                              className="aspect-[16/10] w-full object-cover"
+                            />
+                          </div>
+                        </MotionDiv>
+                      )
+                    })}
+                </AnimatePresence>
               </div>
             </div>
           </div>
