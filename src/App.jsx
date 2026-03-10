@@ -316,13 +316,13 @@ function App() {
             <MotionDiv
               animate={{ x: ['100%', '-100%'] }}
               transition={{ duration: 16, ease: 'linear', repeat: Number.POSITIVE_INFINITY }}
-              className="inline-flex whitespace-nowrap text-sm font-semibold text-slate-700 md:text-base"
+              className="inline-flex items-center whitespace-nowrap text-sm font-semibold text-slate-700 md:text-base"
             >
-              <span>Launch Offer: </span>
+              <span>Launch Offer:</span>
               <span className="mx-2 inline-flex rounded-full bg-prerna-blue px-3 py-1 text-white shadow-[0_8px_20px_rgba(0,102,255,0.24)]">
                 30
               </span>
-              <span>Days Free Access for the First </span>
+              <span>Days Free Access for the First</span>
               <span className="mx-2 inline-flex rounded-full bg-prerna-orange px-3 py-1 text-white shadow-[0_8px_20px_rgba(255,136,0,0.28)]">
                 50
               </span>
