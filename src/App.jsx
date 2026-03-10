@@ -27,7 +27,7 @@ const content = {
   trustLine: '',
   primaryCta: 'book the call now',
   secondaryCta: 'Start Free Trial',
-  microCopy: 'Part of the Apni Pathshala network',
+  microCopy: 'Part of the Apni Pathshala Ecosystem',
   socialProof: 'Families, schools, and learning communities across India use Apni Prerna to create safer digital environments for children.',
   problemHeadline: 'About Apni Prerna',
   solutionHeadline: 'Why Families Trust Apni Prerna',
@@ -310,28 +310,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,102,255,0.12),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbff_38%,#ffffff_100%)] text-slate-900">
-      <div className="overflow-hidden border-b border-orange-200 bg-[linear-gradient(90deg,#fff1e6,#ffe0bf)]">
-        <div className="mx-auto w-[min(1200px,calc(100%-2rem))] py-3">
-          <div className="relative overflow-hidden">
-            <MotionDiv
-              animate={{ x: ['100%', '-100%'] }}
-              transition={{ duration: 16, ease: 'linear', repeat: Number.POSITIVE_INFINITY }}
-              className="inline-flex items-center whitespace-nowrap text-sm font-semibold text-slate-700 md:text-base"
-            >
-              <span>Launch Offer:</span>
-              <span className="mx-2 inline-flex rounded-full bg-prerna-blue px-3 py-1 text-white shadow-[0_8px_20px_rgba(0,102,255,0.24)]">
-                30
-              </span>
-              <span>Days Free Access for the First</span>
-              <span className="mx-2 inline-flex rounded-full bg-prerna-orange px-3 py-1 text-white shadow-[0_8px_20px_rgba(255,136,0,0.28)]">
-                50
-              </span>
-              <span>Parents</span>
-            </MotionDiv>
-          </div>
-        </div>
-      </div>
-
       <header className="sticky top-0 z-40 border-b border-prerna-blue/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-4">
           <a className="flex items-center gap-3 text-slate-900" href="#home" aria-label="Apni Prerna home">
