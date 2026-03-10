@@ -239,17 +239,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,102,255,0.12),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbff_38%,#ffffff_100%)] text-slate-900">
-      <div className="border-b border-orange-200 bg-[linear-gradient(90deg,#fff1e6,#ffe0bf)]">
-        <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-3">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-prerna-orange-dark">Top Announcement Bar</p>
-            <p className="text-sm text-slate-700 md:text-base">
+      <div className="overflow-hidden border-b border-orange-200 bg-[linear-gradient(90deg,#fff1e6,#ffe0bf)]">
+        <div className="mx-auto w-[min(1200px,calc(100%-2rem))] py-3">
+          <div className="relative overflow-hidden">
+            <MotionDiv
+              animate={{ x: ['100%', '-100%'] }}
+              transition={{ duration: 14, ease: 'linear', repeat: Number.POSITIVE_INFINITY }}
+              className="whitespace-nowrap text-sm font-semibold text-slate-700 md:text-base"
+            >
               Launch Offer: 30 Days Free Access for the First 50 Families
-            </p>
+            </MotionDiv>
           </div>
-          <button className={`${primaryButtonClass} min-h-11 px-5 py-2`} type="button" onClick={() => openFormModal('announcement')}>
-            Claim Free Access
-          </button>
         </div>
       </div>
 
