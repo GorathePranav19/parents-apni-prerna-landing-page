@@ -314,8 +314,8 @@ function App() {
       <header className="sticky top-0 z-40 border-b border-prerna-blue/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-4">
           <a className="flex items-center gap-3 text-slate-900" href="#home" aria-label="Apni Prerna home">
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-[linear-gradient(135deg,#0066FF,#FF8800)] font-heading text-lg font-bold text-white shadow-[0_16px_36px_rgba(0,102,255,0.22)]">
-              A
+            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-prerna-blue/10 bg-white shadow-[0_16px_36px_rgba(0,102,255,0.16)]">
+              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-full w-full object-cover" />
             </span>
             <strong className="block font-heading text-base">Apni Prerna</strong>
           </a>
@@ -544,10 +544,10 @@ function App() {
         <Section className="bg-[linear-gradient(180deg,#ffffff_0%,#edf4ff_100%)] py-16 md:py-24">
           <div className="mx-auto grid w-[min(1200px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Testimonials</p>
-              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">What Parents and Educators Say</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Partners</p>
+              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">Organizations Supporting Apni Prerna</h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 md:text-lg">
-                Trusted by parents and learning communities across India.
+                Working together to build a safer digital learning environment for students across India.
               </p>
 
               <div className="mt-8 rounded-[1.8rem] bg-[linear-gradient(135deg,#0066FF,#0052CC)] p-6 text-white shadow-[0_24px_60px_rgba(0,82,204,0.22)]">
