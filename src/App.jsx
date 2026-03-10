@@ -28,7 +28,7 @@ const content = {
   primaryCta: 'Book the call now',
   secondaryCta: '',
   microCopy: 'Part of the Apni Pathshala Ecosystem',
-  socialProof: 'Families, schools, and learning communities across India use Apni Prerna to create safer digital environments for children.',
+  socialProof: '',
   problemHeadline: 'About Apni Prerna',
   solutionHeadline: 'Why Families Trust Apni Prerna',
   solutionSubheadline:
