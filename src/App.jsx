@@ -112,11 +112,11 @@ const comparisonRows = [
 
 const plans = [
   {
-    name: 'First 100 Parents',
+    name: 'Special Offer',
     price: '₹99',
-    originalPrice: '₹1000',
+    originalPrice: '₹999',
     cadence: '/month',
-    billed: '',
+    billed: 'First 100 Parents only',
     featured: true,
     features: [
       'Learning progress tracking',
@@ -617,7 +617,8 @@ function App() {
                 <MotionArticle key={plan.name} whileHover={{ y: -6 }} className={`rounded-[1.7rem] border-t-[5px] p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)] ${plan.featured ? 'scale-100 border-prerna-orange bg-[linear-gradient(180deg,#fffaf3,#ffffff)] lg:scale-[1.03]' : 'border-prerna-blue bg-white'}`}>
                   {plan.badge ? <span className={`inline-flex rounded-full px-3 py-2 text-sm font-semibold ${plan.featured ? 'bg-prerna-blue text-white' : 'bg-prerna-blue-light text-prerna-blue'}`}>{plan.badge}</span> : null}
                   <h3 className="mt-5 font-heading text-2xl text-slate-900">{plan.name}</h3>
-                  <div className="mt-5 flex items-end gap-2">
+                  <div className="mt-5 flex items-end gap-3">
+                    <span className="pb-2 text-2xl font-semibold text-slate-400 line-through">{plan.originalPrice}</span>
                     <strong className="font-heading text-5xl text-slate-950">{plan.price}</strong>
                     <span className="pb-2 text-slate-600">{plan.cadence}</span>
                   </div>
