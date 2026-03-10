@@ -115,11 +115,6 @@ const faqs = [
   ['Does it help reduce distractions during study time?', 'Yes. Distraction control is a core feature and is designed to reduce access to gaming, entertainment, and non-learning websites during productive hours.'],
 ]
 
-const testimonials = [
-  ['Apni Prerna gives me peace of mind knowing my children are safe online during their study time.', 'Priya Sharma', 'Parent of 2 Students'],
-  ['We recommend Apni Prerna to parents in our learning community. It helps keep computers focused on learning.', 'Rajesh Kumar', 'Learning Center Director'],
-]
-
 const navItems = [
   ['features', 'Features'],
   ['how-it-works', 'How It Works'],
@@ -495,8 +490,8 @@ function App() {
         <Section className="bg-[linear-gradient(180deg,#ffffff_0%,#edf4ff_100%)] py-16 md:py-24">
           <div className="mx-auto grid w-[min(1200px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Testimonials</p>
-              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">What Parents and Educators Say</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Why Families Trust Apni Prerna</p>
+              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">Built for safe digital learning, not generic device monitoring</h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 md:text-lg">
                 Trusted by parents and learning communities across India.
               </p>
@@ -523,20 +518,6 @@ function App() {
             </div>
 
             <div className="grid gap-6">
-              {testimonials.map(([quote, author, role]) => (
-                <MotionArticle key={author} whileHover={{ y: -6 }} className="rounded-[1.8rem] border border-prerna-blue/12 bg-white p-8 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                  <div className="flex gap-1 text-prerna-orange">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <span key={`${author}-${index}`}>★</span>
-                    ))}
-                  </div>
-                  <p className="mt-5 text-lg leading-8 text-slate-700">"{quote}"</p>
-                  <div className="mt-6 border-t border-slate-200 pt-5">
-                    <p className="font-heading text-xl text-slate-950">{author}</p>
-                    <p className="text-sm text-slate-500">{role}</p>
-                  </div>
-                </MotionArticle>
-              ))}
               <div className="rounded-[1.8rem] border border-prerna-blue/12 bg-[linear-gradient(135deg,#f4f8ff,#fff7ee)] p-8 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
                 <p className="text-sm font-bold uppercase tracking-[0.22em] text-prerna-blue-dark">Our Impact</p>
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
