@@ -21,7 +21,7 @@ const content = {
   navCta: 'book the call now',
   heroHeadline: 'Protect Your Child in the Digital World',
   heroSubheadline:
-    'Apni Prerna creates a safe online environment for students by blocking harmful websites, reducing distractions, and helping children use technology responsibly.',
+    "Apni Prerna helps parents track their childs learning progress. Parents can view the learning curve and activity reports to understand how their child is using the computer for education.",
   heroDescription:
     '',
   trustLine: '',
