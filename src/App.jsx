@@ -18,12 +18,12 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 const content = {
   navCta: 'Claim Free Access',
-  heroHeadline: 'Launch Offer: 30 Days Free Access for the First 50 Families',
+  heroHeadline: 'Protect Your Child in the Digital World',
   heroSubheadline:
-    "Get early access to Apni Prerna and start protecting your child's digital learning environment today.",
+    'Apni Prerna creates a safe online environment for students by blocking harmful websites, reducing distractions, and helping children use technology responsibly.',
   heroDescription:
-    'Apni Prerna is a student safety software designed to help families create a safer digital learning environment for children using computers.',
-  trustLine: 'Trusted by parents and learning communities across India',
+    '',
+  trustLine: '',
   primaryCta: 'Claim Free Access',
   secondaryCta: 'Start Free Trial',
   microCopy: 'Part of the Apni Pathshala network',
