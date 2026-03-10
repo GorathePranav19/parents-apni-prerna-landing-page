@@ -464,7 +464,11 @@ function App() {
               Apni Prerna provides parents with a simple dashboard that shows how the computer is being used. Parents can monitor browsing activity, detect unsafe websites, and guide children toward safer digital habits.
             </p>
             <div className="mt-12 overflow-hidden rounded-[2rem] border border-prerna-blue/10 bg-[linear-gradient(135deg,#f7fbff,#fff8f0)] p-5 shadow-[0_24px_55px_rgba(0,63,157,0.08)] md:p-8">
-              <div role="tablist" aria-label="Parent dashboard features" className="flex flex-nowrap gap-3 overflow-x-auto pb-2">
+              <div
+                role="tablist"
+                aria-label="Parent dashboard features"
+                className="flex flex-nowrap justify-start gap-3 overflow-x-auto pb-2 md:justify-center"
+              >
                 {dashboardItems.map(([icon, title]) => {
                   const DashboardIcon = iconMap[icon]
                   const isActive = activeDashboardTab === title
