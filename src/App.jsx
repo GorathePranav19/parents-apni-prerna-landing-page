@@ -18,15 +18,15 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 const content = {
-  navCta: 'book the call now',
+  navCta: 'Book the call now',
   heroHeadline: 'Protect Your Child in the Digital World',
   heroSubheadline:
     'Apni Prerna helps parents create a safer digital learning environment for their children. It protects students online by blocking harmful websites, reducing distractions, and promoting responsible use of technology.',
   heroDescription:
     '',
   trustLine: '',
-  primaryCta: 'book the call now',
-  secondaryCta: 'Start Free Trial',
+  primaryCta: 'Book the call now',
+  secondaryCta: '',
   microCopy: 'Part of the Apni Pathshala Ecosystem',
   socialProof: 'Families, schools, and learning communities across India use Apni Prerna to create safer digital environments for children.',
   problemHeadline: 'About Apni Prerna',
@@ -42,9 +42,9 @@ const content = {
   finalHeadline: 'Give Your Child a Safer Digital Future',
   finalSubheadline:
     'Become one of the first 50 students to start using Apni Prerna and help shape the future of safe digital learning for children.',
-  finalCta: 'book the call now',
+  finalCta: 'Book the call now',
   footerTagline: 'Apni Prerna is part of the Apni Pathshala network, which works to improve access to safe and productive digital learning environments for students across different communities.',
-  stickyCta: 'book the call now',
+  stickyCta: 'Book the call now',
   chat: 'Need Help? Contact Us',
 }
 
