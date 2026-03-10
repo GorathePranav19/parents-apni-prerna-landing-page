@@ -588,7 +588,7 @@ function App() {
                 <p className="text-sm font-bold uppercase tracking-[0.22em] text-prerna-blue-dark">Our Impact</p>
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
                   <div className="rounded-[1.4rem] bg-white px-5 py-6 text-center">
-                    <p className="font-heading text-4xl text-prerna-blue">1+</p>
+                    <p className="font-heading text-4xl text-prerna-blue">3+</p>
                     <p className="mt-2 font-semibold text-slate-900">Partners</p>
                     <p className="mt-2 text-sm leading-6 text-slate-600">Organizations and communities supporting the mission of building safe digital learning spaces for students.</p>
                   </div>
