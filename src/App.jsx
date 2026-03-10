@@ -76,6 +76,24 @@ const dashboardItems = [
   ['ClipboardList', 'Activity Reports', 'Understand daily and weekly browsing patterns.'],
 ]
 
+const dashboardPreviews = {
+  'Website Monitoring': {
+    image: '/website-monitor.jpeg',
+    alt: 'Website monitoring dashboard preview',
+    label: 'Live browser tracking',
+  },
+  'Blocked Websites': {
+    image: '/block-website.jpeg',
+    alt: 'Blocked websites dashboard preview',
+    label: 'Blocked website activity',
+  },
+  'Activity Reports': {
+    image: '/report-photo.jpeg',
+    alt: 'Activity reports dashboard preview',
+    label: 'Learning report view',
+  },
+}
+
 const comparisonRows = [
   ['Harmful website blocking', 'Included', 'Limited or inconsistent'],
   ['Distraction control', 'Included', 'Often missing'],
