@@ -133,8 +133,16 @@ const faqs = [
 ]
 
 const testimonials = [
-  ['Apni Prerna gives me peace of mind knowing my children are safe online during their study time.', 'Priya Sharma', 'Parent of 2 Students'],
-  ['We recommend Apni Prerna to parents in our learning community. It helps keep computers focused on learning.', 'Rajesh Kumar', 'Learning Center Director'],
+  [
+    'As children increasingly rely on computers for learning, ensuring their online safety is essential. Apni Prerna is a thoughtful solution that helps parents create a safer digital learning environment by reducing distractions and protecting students from harmful websites. It empowers parents to guide responsible technology use while supporting focused learning.',
+    'Dr. Aniruddha Malpani',
+    'Founder, Malpani Ventures',
+  ],
+  [
+    'At Apni Pathshala, we work closely with students and learning communities across the country, and we understand the importance of safe digital learning environments. Apni Prerna was created to help parents and educators ensure that computers remain tools for learning rather than sources of distraction or risk.',
+    'Sagar Tiwari',
+    'CEO, Apni Pathshala',
+  ],
 ]
 
 const navItems = [
