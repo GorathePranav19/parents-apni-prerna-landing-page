@@ -244,10 +244,14 @@ function App() {
           <div className="relative overflow-hidden">
             <MotionDiv
               animate={{ x: ['100%', '-100%'] }}
-              transition={{ duration: 14, ease: 'linear', repeat: Number.POSITIVE_INFINITY }}
-              className="whitespace-nowrap text-sm font-semibold text-slate-700 md:text-base"
+              transition={{ duration: 16, ease: 'linear', repeat: Number.POSITIVE_INFINITY }}
+              className="inline-flex whitespace-nowrap text-sm font-semibold text-slate-700 md:text-base"
             >
-              Launch Offer: 30 Days Free Access for the First 50 Families
+              <span>Launch Offer: 30 Days Free Access for the First </span>
+              <span className="mx-2 inline-flex rounded-full bg-prerna-orange px-3 py-1 text-white shadow-[0_8px_20px_rgba(255,136,0,0.28)]">
+                50
+              </span>
+              <span>Families</span>
             </MotionDiv>
           </div>
         </div>
