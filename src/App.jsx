@@ -114,7 +114,7 @@ const plans = [
   {
     name: 'First 100 Parents',
     price: '₹99',
-    originalPrice: '₹999',
+    originalPrice: '₹1000',
     cadence: '/month',
     billed: '',
     featured: true,
