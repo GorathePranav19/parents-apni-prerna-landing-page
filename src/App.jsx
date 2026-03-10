@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import confetti from 'canvas-confetti'
 import {
   AlertTriangle,
   Bell,
@@ -163,6 +164,30 @@ function trackEvent(event, detail) {
   window.dataLayer.push({ event, detail })
 }
 
+function launchWelcomeConfetti() {
+  const duration = 5 * 1000
+  const animationEnd = Date.now() + duration
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 }
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min
+  }
+
+  const interval = window.setInterval(() => {
+    const timeLeft = animationEnd - Date.now()
+
+    if (timeLeft <= 0) {
+      window.clearInterval(interval)
+      return
+    }
+
+    const particleCount = 50 * (timeLeft / duration)
+
+    confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } })
+    confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } })
+  }, 250)
+}
+
 function Section({ id, className = '', children }) {
   const reduceMotion = useReducedMotion()
 
@@ -194,6 +219,21 @@ function App() {
 
   useEffect(() => {
     document.title = 'Apni Prerna - Student Safety & Parental Control Software India'
+  }, [])
+
+  useEffect(() => {
+    const hasSeenWelcomeAnimation = window.localStorage.getItem('apni-prerna-welcome-confetti')
+
+    if (hasSeenWelcomeAnimation) {
+      return
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      launchWelcomeConfetti()
+      window.localStorage.setItem('apni-prerna-welcome-confetti', 'true')
+    }, 400)
+
+    return () => window.clearTimeout(timeoutId)
   }, [])
 
   useEffect(() => {
