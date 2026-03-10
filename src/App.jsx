@@ -17,50 +17,50 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 const content = {
-  navCta: 'Start Subscription',
-  heroHeadline: 'Protect Your Child in the Digital World',
+  navCta: 'Claim Free Access',
+  heroHeadline: 'Launch Offer: 30 Days Free Access for the First 50 Families',
   heroSubheadline:
-    'Apni Prerna helps parents keep children safe on computers and the internet by blocking harmful websites, reducing distractions, and supporting responsible device usage.',
-  heroDescription: '',
-  trustLine: '',
-  primaryCta: 'Start Protecting My Child',
-  secondaryCta: 'See How It Works',
-  microCopy: '',
-  socialProof: '',
-  problemHeadline: 'The Internet Is Not Always Safe for Children',
-  solutionHeadline: 'Student Safety Software Designed for Everyday Protection',
+    "Get early access to Apni Prerna and start protecting your child's digital learning environment today.",
+  heroDescription:
+    'Apni Prerna is a student safety software designed to help families create a safer digital learning environment for children using computers.',
+  trustLine: 'Trusted by parents and learning communities across India',
+  primaryCta: 'Claim Free Access',
+  secondaryCta: 'Start Free Trial',
+  microCopy: 'Part of the Apni Pathshala network',
+  socialProof: 'Families, schools, and learning communities across India use Apni Prerna to create safer digital environments for children.',
+  problemHeadline: 'About Apni Prerna',
+  solutionHeadline: 'Why Families Trust Apni Prerna',
   solutionSubheadline:
-    'Apni Prerna gives parents clear controls and clear information so children can use computers for learning in a safe and responsible way.',
+    'Parents and educators choose Apni Prerna because it focuses on safe digital learning rather than generic device monitoring tools.',
   howHeadline: 'How Apni Prerna Works',
-  dashboardHeadline: 'Parent Dashboard Visibility Without Complexity',
-  pricingHeadline: 'Choose a Plan That Fits Your Family',
-  pricingSubheadline: 'Monthly plans per child with annual options available',
+  dashboardHeadline: 'Parent Dashboard for Clear Activity Insights',
+  pricingHeadline: 'Special Offer for Early Users',
+  pricingSubheadline: 'For the first 100 parents, Apni Prerna is available at a special early access price of ₹99 per month with full access to all core features.',
   faqHeadline: 'Frequently Asked Questions',
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
   finalSubheadline:
-    'Start using Apni Prerna to block harmful websites, reduce distractions, and maintain a productive digital environment for your child.',
-  finalCta: 'Start Subscription',
-  footerTagline: '',
-  stickyCta: 'Start Subscription',
+    'Become one of the first 100 parents to start using Apni Prerna and help shape the future of safe digital learning for children.',
+  finalCta: 'Join the First 100 Parents',
+  footerTagline: 'Apni Prerna is part of the Apni Pathshala network, which works to improve access to safe and productive digital learning environments for students across different communities.',
+  stickyCta: 'Claim Free Access',
   chat: 'Need Help? Contact Us',
 }
 
 const googleFormUrl = 'https://forms.gle/ZN9PWNQghGz5eAE29'
 
 const problems = [
-  ['Shield', 'Harmful Websites', 'Unsafe content can appear without warning', 'Children can be exposed to adult content, unsafe links, gambling pages, and malware-based websites while browsing.'],
-  ['Alert', 'Online Distractions', 'Learning time is easily lost', 'Games, entertainment platforms, and social websites can break concentration and reduce productive computer use.'],
-  ['Download', 'Unsafe Downloads', 'Risky files affect device safety', 'Unverified downloads, unwanted programs, and unsafe tools can create security issues on a student device.'],
+  ['Shield', 'Safer Learning Environment', 'Built for digital learning', 'The internet offers powerful learning opportunities, but it also exposes children to harmful websites, unsafe downloads, and online distractions.'],
+  ['Alert', 'Simple and Responsible Guidance', 'Supports better habits', 'Apni Prerna was created to help parents guide their childrens computer usage in a simple and responsible way.'],
+  ['Download', 'Learning, Growth, and Exploration', 'The goal is simple', 'To help children use technology for learning, growth, and exploration in a safe and responsible way.'],
 ]
 
 const features = [
-  ['Shield', '01', 'Harmful Website Blocking', 'Automatically blocks inappropriate websites, malware pages, adult content, gambling pages, and unsafe downloads.', 'Core Safety'],
-  ['Blocks', '02', 'Distraction Control', 'Restricts access to games, social media, and entertainment platforms during study time to keep attention on learning.', 'Focus Time'],
-  ['MonitorCheck', '03', 'Safe Device Monitoring', 'Checks device safety and helps ensure unsafe or unwanted programs are not actively running.', 'Device Health'],
-  ['SearchCheck', '04', 'Learning-Focused Environment', 'Supports productive device usage by keeping the computer centered on educational activities and student work.', 'Learning First'],
-  ['ClipboardList', '05', 'Activity Summary for Parents', 'Shows simplified usage summaries so parents can understand how the computer is being used.', 'Parent Visibility'],
-  ['Bot', '06', 'Smart Safety Policies', 'Applies rules that maintain safe and productive use of the device without making setup difficult for families.', 'Smart Rules'],
+  ['Shield', '01', 'Blocks harmful websites automatically', 'Block harmful websites, unsafe downloads, and risky content before children access them.', 'Core Safety'],
+  ['Blocks', '02', 'Reduces online distractions during study hours', 'Keep devices focused on learning by limiting games, entertainment, and unrelated sites.', 'Study Focus'],
+  ['ClipboardList', '03', 'Provides simple activity summaries for parents', 'Receive clear summaries of device activity without technical complexity.', 'Parent Reports'],
+  ['SearchCheck', '04', 'Encourages responsible digital habits for children', 'Help children build safe and focused technology habits over time.', 'Healthy Habits'],
+  ['MonitorCheck', '05', 'Designed specifically for learning environments', 'Made for families, schools, and learning communities instead of generic device monitoring.', 'Learning First'],
 ]
 
 const steps = [
@@ -70,12 +70,12 @@ const steps = [
 ]
 
 const dashboardItems = [
-  ['Bell', 'Safety alerts', 'Receive clear updates when risky activity or blocked content is detected.'],
-  ['Shield', 'Blocked website information', 'See what websites were restricted and why they were blocked.'],
-  ['LayoutDashboard', 'Device status', 'Check whether the student computer is active, protected, and working within the set policies.'],
-  ['ClipboardList', 'Activity summaries', 'Review simplified summaries of usage without needing technical knowledge.'],
-  ['ChartColumn', 'Weekly usage reports', 'Understand overall learning and device usage patterns over time.'],
-  ['Gauge', 'Smart visibility', 'Stay informed without constantly supervising the child in person.'],
+  ['LayoutDashboard', 'Website Monitoring', 'See which sites are visited and how long they are used.'],
+  ['Shield', 'Blocked Websites', 'Automatically stops harmful or unsafe websites.'],
+  ['ClipboardList', 'Activity Reports', 'Understand daily and weekly browsing patterns.'],
+  ['Blocks', 'Study Focus Control', 'Limit distractions during learning time.'],
+  ['Bell', 'Safety Alerts', 'Get notified when risky content is detected.'],
+  ['ChartColumn', 'Usage History', 'View a clear record of device activity.'],
 ]
 
 const comparisonRows = [
@@ -89,28 +89,19 @@ const comparisonRows = [
 
 const plans = [
   {
-    name: 'Basic',
-    price: 'Rs. 99',
-    cadence: '/month per child',
-    billed: 'Annual options available',
-    features: ['Harmful website blocking', 'Distraction control', 'Basic safety monitoring'],
-  },
-  {
-    name: 'Standard',
-    price: 'Rs. 199',
-    cadence: '/month per child',
-    billed: 'Annual options available',
-    badge: 'Recommended',
+    name: 'Early Access',
+    price: '₹99',
+    cadence: '/month',
+    billed: 'Full access to all core features',
+    badge: 'First 100 Parents',
     featured: true,
-    features: ['Everything in Basic', 'Device monitoring', 'Safety alerts', 'Activity summaries'],
-  },
-  {
-    name: 'Premium',
-    price: 'Rs. 349',
-    cadence: '/month per child',
-    billed: 'Annual options available',
-    badge: 'Full Access',
-    features: ['Everything in Standard', 'Parent dashboard access', 'Weekly reports', 'Priority support'],
+    features: [
+      'Blocks harmful websites',
+      'Reduces distractions during study time',
+      'Clear parent activity summaries',
+      'Safer digital habits for children',
+      'Built for real learning environments',
+    ],
   },
 ]
 
@@ -122,6 +113,11 @@ const faqs = [
   ['What devices can run Apni Prerna?', 'The website presents Apni Prerna as software for protecting student computers and internet usage in home and learning environments.'],
   ['Can schools and learning centres use it?', 'Yes. The platform can also support schools, educational institutions, learning centres, and digital learning programs.'],
   ['Does it help reduce distractions during study time?', 'Yes. Distraction control is a core feature and is designed to reduce access to gaming, entertainment, and non-learning websites during productive hours.'],
+]
+
+const testimonials = [
+  ['Apni Prerna gives me peace of mind knowing my children are safe online during their study time.', 'Priya Sharma', 'Parent of 2 Students'],
+  ['We recommend Apni Prerna to parents in our learning community. It helps keep computers focused on learning.', 'Rajesh Kumar', 'Learning Center Director'],
 ]
 
 const navItems = [
@@ -243,6 +239,20 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,102,255,0.12),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbff_38%,#ffffff_100%)] text-slate-900">
+      <div className="border-b border-orange-200 bg-[linear-gradient(90deg,#fff1e6,#ffe0bf)]">
+        <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-3">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-prerna-orange-dark">Top Announcement Bar</p>
+            <p className="text-sm text-slate-700 md:text-base">
+              Launch Offer: 30 Days Free Access for the First 50 Families
+            </p>
+          </div>
+          <button className={`${primaryButtonClass} min-h-11 px-5 py-2`} type="button" onClick={() => openFormModal('announcement')}>
+            Claim Free Access
+          </button>
+        </div>
+      </div>
+
       <header className="sticky top-0 z-40 border-b border-prerna-blue/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-4">
           <a className="flex items-center gap-3 text-slate-900" href="#home" aria-label="Apni Prerna home">
@@ -327,6 +337,9 @@ function App() {
         <Section className="bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_25%),linear-gradient(160deg,#0052CC,#013694)] py-16 text-white md:py-24">
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.problemHeadline}</h2>
+            <p className="mx-auto mt-6 max-w-4xl text-center text-lg leading-8 text-white/88">
+              With Apni Prerna, parents can block harmful websites, reduce online distractions during study time, and receive clear summaries of device activity. The system runs quietly in the background while helping families encourage safer and more focused digital habits.
+            </p>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {problems.map(([icon, title, stat, description]) => {
                 const ProblemIcon = iconMap[icon]
@@ -393,20 +406,41 @@ function App() {
         <Section id="dashboard" className="bg-white py-16 md:py-24">
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.dashboardHeadline}</h2>
-            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {dashboardItems.map(([icon, title, description]) => {
-                const DashboardIcon = iconMap[icon]
+            <p className="mx-auto mt-4 max-w-4xl text-center text-lg leading-8 text-slate-600">
+              Apni Prerna provides parents with a simple dashboard that shows how the computer is being used. Parents can monitor browsing activity, detect unsafe websites, and guide children toward safer digital habits.
+            </p>
+            <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div className="grid gap-6 md:grid-cols-2">
+                {dashboardItems.map(([icon, title, description]) => {
+                  const DashboardIcon = iconMap[icon]
 
-                return (
-                  <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-prerna-blue/10 bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-                    <span className="inline-flex rounded-2xl bg-prerna-orange-light p-3 text-prerna-orange">
-                      <DashboardIcon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                    <h3 className="mt-4 font-heading text-2xl text-slate-900">{title}</h3>
-                    <p className="mt-3 leading-7 text-slate-600">{description}</p>
-                  </MotionArticle>
-                )
-              })}
+                  return (
+                    <MotionArticle key={title} whileHover={{ y: -6 }} className="rounded-[1.6rem] border border-prerna-blue/10 bg-white p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                      <span className="inline-flex rounded-2xl bg-prerna-orange-light p-3 text-prerna-orange">
+                        <DashboardIcon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <h3 className="mt-4 font-heading text-2xl text-slate-900">{title}</h3>
+                      <p className="mt-3 leading-7 text-slate-600">{description}</p>
+                    </MotionArticle>
+                  )
+                })}
+              </div>
+              <div className="grid gap-5">
+                <div className="overflow-hidden rounded-[1.8rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                  <img
+                    src="/student-data-1.jpg"
+                    alt="Student data dashboard screenshot showing browsing activity insights"
+                    className="w-full object-cover"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-[1.8rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                  <img
+                    src="/student-data-2.jpg"
+                    alt="Student data dashboard screenshot showing website and safety activity"
+                    className="w-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </Section>
@@ -414,19 +448,21 @@ function App() {
         <Section className="bg-[linear-gradient(180deg,#ffffff_0%,#edf4ff_100%)] py-16 md:py-24">
           <div className="mx-auto grid w-[min(1200px,calc(100%-2rem))] gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Why Apni Prerna</p>
-              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">Why Parents Choose Apni Prerna</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-prerna-blue-dark">Testimonials</p>
+              <h2 className="mt-4 font-heading text-3xl leading-tight text-slate-950 md:text-5xl">What Parents and Educators Say</h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 md:text-lg">
-                Built for students, designed for parents, and focused on safer digital learning instead of generic device control.
+                Trusted by parents and learning communities across India.
               </p>
 
               <div className="mt-8 rounded-[1.8rem] bg-[linear-gradient(135deg,#0066FF,#0052CC)] p-6 text-white shadow-[0_24px_60px_rgba(0,82,204,0.22)]">
-                <p className="text-sm font-semibold text-white/75">What stands out</p>
+                <p className="text-sm font-semibold text-white/75">Why families trust the platform</p>
                 <div className="mt-5 space-y-4">
                   {[
-                    'Student-focused protection, not generic monitoring',
-                    'Clear parent summaries without technical complexity',
-                    'Safer browsing, distraction control, and reports in one system',
+                    'Blocks harmful websites automatically',
+                    'Reduces online distractions during study hours',
+                    'Provides simple activity summaries for parents',
+                    'Encourages responsible digital habits for children',
+                    'Designed specifically for learning environments',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/14 text-sm font-bold text-white">
@@ -439,36 +475,40 @@ function App() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[2rem] border border-prerna-blue/12 bg-white shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
-              <div className="grid gap-4 bg-[linear-gradient(135deg,#f4f8ff,#fff7ee)] px-5 py-5 md:grid-cols-[1.4fr_1fr_1fr] md:items-center">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-prerna-blue-dark">Feature Comparison</p>
-                  <p className="mt-2 font-heading text-xl text-slate-950">A better fit for student safety</p>
-                </div>
-                <div className="rounded-[1.2rem] bg-[linear-gradient(135deg,#0066FF,#0052CC)] px-4 py-4 text-white">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/70">Apni Prerna</p>
-                  <p className="mt-2 font-heading text-lg">Included and focused</p>
-                </div>
-                <div className="rounded-[1.2rem] bg-slate-100 px-4 py-4 text-slate-700">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Typical Tools</p>
-                  <p className="mt-2 font-heading text-lg text-slate-900">Basic or missing</p>
-                </div>
-              </div>
-
-              <div className="divide-y divide-slate-200">
-                {comparisonRows.map(([feature, ours, others]) => (
-                  <div key={feature} className="grid gap-3 px-5 py-5 md:grid-cols-[1.4fr_1fr_1fr] md:items-center">
-                    <div>
-                      <p className="font-heading text-lg text-slate-950">{feature}</p>
-                    </div>
-                    <div className="rounded-[1.2rem] bg-prerna-blue-light px-4 py-3 text-sm font-semibold text-prerna-blue">
-                      {ours}
-                    </div>
-                    <div className="rounded-[1.2rem] bg-rose-50 px-4 py-3 text-sm font-medium text-rose-600">
-                      {others}
-                    </div>
+            <div className="grid gap-6">
+              {testimonials.map(([quote, author, role]) => (
+                <MotionArticle key={author} whileHover={{ y: -6 }} className="rounded-[1.8rem] border border-prerna-blue/12 bg-white p-8 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                  <div className="flex gap-1 text-prerna-orange">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <span key={`${author}-${index}`}>★</span>
+                    ))}
                   </div>
-                ))}
+                  <p className="mt-5 text-lg leading-8 text-slate-700">"{quote}"</p>
+                  <div className="mt-6 border-t border-slate-200 pt-5">
+                    <p className="font-heading text-xl text-slate-950">{author}</p>
+                    <p className="text-sm text-slate-500">{role}</p>
+                  </div>
+                </MotionArticle>
+              ))}
+              <div className="rounded-[1.8rem] border border-prerna-blue/12 bg-[linear-gradient(135deg,#f4f8ff,#fff7ee)] p-8 shadow-[0_20px_45px_rgba(0,63,157,0.08)]">
+                <p className="text-sm font-bold uppercase tracking-[0.22em] text-prerna-blue-dark">Our Impact</p>
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  <div className="rounded-[1.4rem] bg-white px-5 py-6 text-center">
+                    <p className="font-heading text-4xl text-prerna-blue">100+</p>
+                    <p className="mt-2 font-semibold text-slate-900">Families Protected</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">Parents use Apni Prerna to keep their children safe while studying online.</p>
+                  </div>
+                  <div className="rounded-[1.4rem] bg-white px-5 py-6 text-center">
+                    <p className="font-heading text-4xl text-prerna-blue">50+</p>
+                    <p className="mt-2 font-semibold text-slate-900">Learning Centers</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">Community learning spaces rely on Apni Prerna to maintain safe computer environments.</p>
+                  </div>
+                  <div className="rounded-[1.4rem] bg-white px-5 py-6 text-center">
+                    <p className="font-heading text-4xl text-prerna-blue">98%</p>
+                    <p className="mt-2 font-semibold text-slate-900">Parent Satisfaction</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">Most parents report improved confidence in their childs digital safety.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -478,7 +518,10 @@ function App() {
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.pricingHeadline}</h2>
             <p className="mx-auto mt-4 max-w-3xl text-center text-lg leading-8 text-slate-600">{content.pricingSubheadline}</p>
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            <p className="mx-auto mt-6 max-w-4xl text-center text-base leading-8 text-slate-600">
+              We are launching Apni Prerna with a limited early access program for the first group of parents who want to create a safer digital environment for their children. Early users will help us test the platform in real-world situations, improve features based on parent feedback, and build a safer and more effective digital learning tool for students.
+            </p>
+            <div className="mx-auto mt-12 grid max-w-xl gap-6">
               {plans.map((plan) => (
                 <MotionArticle key={plan.name} whileHover={{ y: -6 }} className={`rounded-[1.7rem] border-t-[5px] p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)] ${plan.featured ? 'scale-100 border-prerna-orange bg-[linear-gradient(180deg,#fffaf3,#ffffff)] lg:scale-[1.03]' : 'border-prerna-blue bg-white'}`}>
                   {plan.badge ? <span className={`inline-flex rounded-full px-3 py-2 text-sm font-semibold ${plan.featured ? 'bg-prerna-blue text-white' : 'bg-prerna-blue-light text-prerna-blue'}`}>{plan.badge}</span> : null}
@@ -501,7 +544,7 @@ function App() {
                       document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' })
                     }}
                   >
-                    {content.navCta}
+                    Join the First 100 Parents
                   </button>
                 </MotionArticle>
               ))}
