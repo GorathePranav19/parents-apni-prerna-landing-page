@@ -74,6 +74,7 @@ const dashboardItems = [
   ['LayoutDashboard', 'Website Monitoring', 'See which sites are visited and how long they are used.'],
   ['Shield', 'Blocked Websites', 'Automatically stops harmful or unsafe websites.'],
   ['ClipboardList', 'Activity Reports', 'Understand daily and weekly browsing patterns.'],
+  ['ChartColumn', 'Usage History', 'See which sites are visited and how long they are used.'],
 ]
 
 const dashboardPreviews = {
