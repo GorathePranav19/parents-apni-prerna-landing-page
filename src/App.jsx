@@ -36,7 +36,7 @@ const content = {
   howHeadline: 'How Apni Prerna Works',
   dashboardHeadline: 'Parent Dashboard for Clear Activity Insights',
   pricingHeadline: 'Special Offer for Early Users',
-  pricingSubheadline: 'Get Apni Prerna for just ₹99/month for the first 100 PARENTSs, instead of the regular price of ₹999/month.',
+  pricingSubheadline: 'Get Apni Prerna for just ₹99/month for the first 100 parents, instead of the regular price of ₹999/month.',
   faqHeadline: 'Frequently Asked Questions',
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
@@ -112,12 +112,11 @@ const comparisonRows = [
 
 const plans = [
   {
-    name: 'First 100 Parents Special',
+    name: 'First 100 Parents',
     price: '₹99',
     originalPrice: '₹999',
     cadence: '/month',
-    billed: 'Save ₹10,800 Per Year',
-    badge: '🔥 EARLY ACCESS: 77% FULL',
+    billed: '',
     featured: true,
     features: [
       'Learning progress tracking',
