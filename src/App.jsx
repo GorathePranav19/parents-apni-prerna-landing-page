@@ -21,7 +21,7 @@ const content = {
   navCta: 'book the call now',
   heroHeadline: 'Protect Your Child in the Digital World',
   heroSubheadline:
-    "Apni Prerna helps parents track their childs learning progress. Parents can view the learning curve and activity reports to understand how their child is using the computer for education.",
+    'Apni Prerna helps parents create a safer digital learning environment for their children. It protects students online by blocking harmful websites, reducing distractions, and promoting responsible use of technology.',
   heroDescription:
     '',
   trustLine: '',
