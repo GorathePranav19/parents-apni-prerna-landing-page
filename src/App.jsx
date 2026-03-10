@@ -36,13 +36,13 @@ const content = {
   howHeadline: 'How Apni Prerna Works',
   dashboardHeadline: 'Parent Dashboard for Clear Activity Insights',
   pricingHeadline: 'Special Offer for Early Users',
-  pricingSubheadline: 'For the first 100 parents, Apni Prerna is available at a special early access price of ₹99 per month with full access to all core features.',
+  pricingSubheadline: 'The actual price is ₹999 per month, but for the first 50 students Apni Prerna is available at a discounted early access price of ₹99 per month with full access to all core features.',
   faqHeadline: 'Frequently Asked Questions',
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
   finalSubheadline:
-    'Become one of the first 100 parents to start using Apni Prerna and help shape the future of safe digital learning for children.',
-  finalCta: 'Join the First 100 Parents',
+    'Become one of the first 50 students to start using Apni Prerna and help shape the future of safe digital learning for children.',
+  finalCta: 'Join the First 50 Students',
   footerTagline: 'Apni Prerna is part of the Apni Pathshala network, which works to improve access to safe and productive digital learning environments for students across different communities.',
   stickyCta: 'Claim Free Access',
   chat: 'Need Help? Contact Us',
@@ -92,9 +92,10 @@ const plans = [
   {
     name: 'Early Access',
     price: '₹99',
+    originalPrice: '₹999',
     cadence: '/month',
     billed: 'Full access to all core features',
-    badge: 'First 100 Parents',
+    badge: 'First 50 Students',
     featured: true,
     features: [
       'Blocks harmful websites',
