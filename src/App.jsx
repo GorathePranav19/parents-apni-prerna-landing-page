@@ -74,8 +74,6 @@ const dashboardItems = [
   ['LayoutDashboard', 'Website Monitoring', 'See which sites are visited and how long they are used.'],
   ['Shield', 'Blocked Websites', 'Automatically stops harmful or unsafe websites.'],
   ['ClipboardList', 'Activity Reports', 'Understand daily and weekly browsing patterns.'],
-  ['Blocks', 'Study Focus Control', 'Limit distractions during learning time.'],
-  ['Bell', 'Safety Alerts', 'Get notified when risky content is detected.'],
   ['ChartColumn', 'Usage History', 'View a clear record of device activity.'],
 ]
 
