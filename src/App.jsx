@@ -121,10 +121,9 @@ const plans = [
     featured: true,
     features: [
       'Learning progress tracking',
-      'Subject-wise analytics',
+      'Category-wise analytics',
       'Real-time activity monitoring',
       'Weekly parent reports',
-      'Milestone celebrations',
       'Educational PC monitoring',
       'Priority support',
     ],
