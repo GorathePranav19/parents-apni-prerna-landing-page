@@ -35,8 +35,8 @@ const content = {
     'Apni Prerna empowers parents and educators with tools that create a safe, focused, and meaningful digital learning environment, going beyond traditional device monitoring solutions. Rather than simply tracking device usage, Apni Prerna supports students in developing responsible technology habits, stronger focus, and a healthier digital experience.',
   howHeadline: 'How Apni Prerna Works',
   dashboardHeadline: 'Parent Dashboard for Clear Activity Insights',
-  pricingHeadline: 'EARLY ACCESS: 77% FULL',
-  pricingSubheadline: 'Get Apni Prerna for just ₹99/month for the first 100 parents, instead of the regular price of ₹999/month.',
+  pricingHeadline: 'Special Offer for Early Users',
+  pricingSubheadline: 'Get Apni Prerna for just ₹99/month for the first 100 PARENTSs, instead of the regular price of ₹999/month.',
   faqHeadline: 'Frequently Asked Questions',
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
@@ -613,9 +613,6 @@ function App() {
           <div className="mx-auto w-[min(1200px,calc(100%-2rem))]">
             <h2 className="text-center font-heading text-3xl leading-tight md:text-5xl">{content.pricingHeadline}</h2>
             <p className="mx-auto mt-4 max-w-3xl text-center text-lg leading-8 text-slate-600">{content.pricingSubheadline}</p>
-            <p className="mx-auto mt-6 max-w-4xl text-center text-base leading-8 text-slate-600">
-              We are launching Apni Prerna with a limited early access program for the first group of parents who want to create a safer digital environment for their children. Early users will help us test the platform in real-world situations, improve features based on parent feedback, and build a safer and more effective digital learning tool for students.
-            </p>
             <div className="mx-auto mt-12 grid max-w-xl gap-6">
               {plans.map((plan) => (
                 <MotionArticle key={plan.name} whileHover={{ y: -6 }} className={`rounded-[1.7rem] border-t-[5px] p-6 shadow-[0_20px_45px_rgba(0,63,157,0.08)] ${plan.featured ? 'scale-100 border-prerna-orange bg-[linear-gradient(180deg,#fffaf3,#ffffff)] lg:scale-[1.03]' : 'border-prerna-blue bg-white'}`}>
