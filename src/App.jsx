@@ -358,9 +358,6 @@ function App() {
                 >
                   {content.primaryCta}
                 </MotionButton>
-                <MotionA whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className={`${secondaryButtonClass} min-h-14 px-7 text-base`} href="#how-it-works">
-                  {content.secondaryCta}
-                </MotionA>
               </div>
               {content.microCopy ? <p className="mt-3 text-sm text-slate-500">{content.microCopy}</p> : null}
               {content.socialProof ? (
