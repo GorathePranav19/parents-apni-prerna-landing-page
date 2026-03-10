@@ -112,19 +112,21 @@ const comparisonRows = [
 
 const plans = [
   {
-    name: 'Early Access',
+    name: 'First 100 Parents Special',
     price: '₹99',
     originalPrice: '₹999',
     cadence: '/month',
-    billed: 'Full access to all core features',
-    badge: 'First 50 Students',
+    billed: 'Save ₹10,800 Per Year',
+    badge: '🔥 EARLY ACCESS: 77% FULL',
     featured: true,
     features: [
-      'Blocks harmful websites',
-      'Reduces distractions during study time',
-      'Clear parent activity summaries',
-      'Safer digital habits for children',
-      'Built for real learning environments',
+      'Learning progress tracking',
+      'Subject-wise analytics',
+      'Real-time activity monitoring',
+      'Weekly parent reports',
+      'Milestone celebrations',
+      'Educational PC monitoring',
+      'Priority support',
     ],
   },
 ]
