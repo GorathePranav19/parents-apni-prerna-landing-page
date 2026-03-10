@@ -317,7 +317,6 @@ function App() {
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-prerna-blue/10 bg-white p-1 shadow-[0_16px_36px_rgba(0,102,255,0.16)]">
               <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-full w-full object-contain" />
             </span>
-            <strong className="block font-heading text-base">Apni Prerna</strong>
           </a>
 
           <nav className="hidden items-center gap-2 text-sm font-medium text-slate-700 md:flex" aria-label="Primary">
