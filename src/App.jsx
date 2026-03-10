@@ -41,7 +41,7 @@ const content = {
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
   finalSubheadline:
-    'Become one of the first 50 students to start using Apni Prerna and help shape the future of safe digital learning for children.',
+    'Become one of the first 100 Parents to start using Apni Prerna and help shape the future of safe digital learning for children.',
   finalCta: 'Book the call now',
   footerTagline: 'Apni Prerna is part of the Apni Pathshala Ecosystem, which works to improve access to safe and productive digital learning environments for students across different communities.',
   stickyCta: 'Book the call now',
