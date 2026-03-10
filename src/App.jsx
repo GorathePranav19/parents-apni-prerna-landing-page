@@ -636,7 +636,7 @@ function App() {
                       document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' })
                     }}
                   >
-                    Book
+                    Book the call now
                   </button>
                 </MotionArticle>
               ))}
