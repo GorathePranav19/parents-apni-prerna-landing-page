@@ -30,9 +30,9 @@ const content = {
   microCopy: 'Part of the Apni Pathshala Ecosystem',
   socialProof: '',
   problemHeadline: 'About Apni Prerna',
-  solutionHeadline: 'Why Families Trust Apni Prerna',
+  solutionHeadline: 'Why Apni Prerna Stands Out',
   solutionSubheadline:
-    'Parents and educators choose Apni Prerna because it focuses on safe digital learning rather than generic device monitoring tools.',
+    'Apni Prerna empowers parents and educators with tools that create a safe, focused, and meaningful digital learning environment, going beyond traditional device monitoring solutions. Rather than simply tracking device usage, Apni Prerna supports students in developing responsible technology habits, stronger focus, and a healthier digital experience.',
   howHeadline: 'How Apni Prerna Works',
   dashboardHeadline: 'Parent Dashboard for Clear Activity Insights',
   pricingHeadline: 'Special Offer for Early Users',
