@@ -43,7 +43,7 @@ const content = {
   finalSubheadline:
     'Become one of the first 50 students to start using Apni Prerna and help shape the future of safe digital learning for children.',
   finalCta: 'Book the call now',
-  footerTagline: 'Apni Prerna is part of the Apni Pathshala network, which works to improve access to safe and productive digital learning environments for students across different communities.',
+  footerTagline: 'Apni Prerna is part of the Apni Pathshala Ecosystem, which works to improve access to safe and productive digital learning environments for students across different communities.',
   stickyCta: 'Book the call now',
   chat: 'Need Help? Contact Us',
 }
@@ -314,8 +314,8 @@ function App() {
       <header className="sticky top-0 z-40 border-b border-prerna-blue/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-4">
           <a className="flex items-center text-slate-900" href="#home" aria-label="Apni Prerna home">
-            <span className="flex h-14 items-center overflow-hidden rounded-2xl bg-white px-2 shadow-[0_16px_36px_rgba(0,102,255,0.12)]">
-              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-10 w-auto object-contain" />
+            <span className="flex items-center">
+              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-12 w-auto object-contain" />
             </span>
           </a>
 
@@ -636,7 +636,7 @@ function App() {
                       document.getElementById('trial-form')?.scrollIntoView({ behavior: 'smooth' })
                     }}
                   >
-                    book the call now
+                    Book
                   </button>
                 </MotionArticle>
               ))}
@@ -803,7 +803,7 @@ function App() {
           <div>
             <h3 className="font-heading text-2xl text-white">Apni Prerna</h3>
             {content.footerTagline ? <p className="mt-4">{content.footerTagline}</p> : null}
-            <p className="mt-2 text-white/70">Part of Apni Pathshala network</p>
+            <p className="mt-2 text-white/70">Part of Apni Pathshala Ecosystem</p>
           </div>
           <div className="space-y-3">
             <h4 className="font-heading text-lg text-white">Product</h4>
