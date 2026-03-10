@@ -314,8 +314,8 @@ function App() {
       <header className="sticky top-0 z-40 border-b border-prerna-blue/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-4">
           <a className="flex items-center gap-3 text-slate-900" href="#home" aria-label="Apni Prerna home">
-            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-prerna-blue/10 bg-white shadow-[0_16px_36px_rgba(0,102,255,0.16)]">
-              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-full w-full object-cover" />
+            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-prerna-blue/10 bg-white p-1 shadow-[0_16px_36px_rgba(0,102,255,0.16)]">
+              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-full w-full object-contain" />
             </span>
             <strong className="block font-heading text-base">Apni Prerna</strong>
           </a>
@@ -551,14 +551,13 @@ function App() {
               </p>
 
               <div className="mt-8 rounded-[1.8rem] bg-[linear-gradient(135deg,#0066FF,#0052CC)] p-6 text-white shadow-[0_24px_60px_rgba(0,82,204,0.22)]">
-                <p className="text-sm font-semibold text-white/75">Why families trust the platform</p>
+                <p className="text-sm font-semibold text-white/75">Why partners support Apni Prerna</p>
                 <div className="mt-5 space-y-4">
                   {[
-                    'Blocks harmful websites automatically',
-                    'Reduces online distractions during study hours',
-                    'Provides simple activity summaries for parents',
-                    'Encourages responsible digital habits for children',
-                    'Designed specifically for learning environments',
+                    'Promoting digital safety for students',
+                    'Supporting learning pods and community education',
+                    'Enabling safe and focused internet usage',
+                    'Expanding digital learning access across India',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/14 text-sm font-bold text-white">
