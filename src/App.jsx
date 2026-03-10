@@ -313,9 +313,9 @@ function App() {
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(0,102,255,0.12),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f9fbff_38%,#ffffff_100%)] text-slate-900">
       <header className="sticky top-0 z-40 border-b border-prerna-blue/10 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex w-[min(1200px,calc(100%-2rem))] flex-wrap items-center justify-between gap-4 py-4">
-          <a className="flex items-center gap-3 text-slate-900" href="#home" aria-label="Apni Prerna home">
-            <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-prerna-blue/10 bg-white p-1 shadow-[0_16px_36px_rgba(0,102,255,0.16)]">
-              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-full w-full object-contain" />
+          <a className="flex items-center text-slate-900" href="#home" aria-label="Apni Prerna home">
+            <span className="flex h-14 items-center overflow-hidden rounded-2xl bg-white px-2 shadow-[0_16px_36px_rgba(0,102,255,0.12)]">
+              <img src="/logo.jpeg" alt="Apni Prerna logo" className="h-10 w-auto object-contain" />
             </span>
           </a>
 
