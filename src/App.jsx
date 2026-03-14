@@ -349,15 +349,46 @@ function App() {
               {content.trustLine ? <p className="mt-5 text-sm font-semibold text-slate-500">{content.trustLine}</p> : null}
               {content.heroDescription ? <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">{content.heroDescription}</p> : null}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <MotionButton
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`${primaryButtonClass} min-h-14 px-7 text-base`}
-                  type="button"
-                  onClick={() => openFormModal('hero')}
-                >
-                  {content.primaryCta}
-                </MotionButton>
+                <div className="relative w-fit">
+                  <div className="pointer-events-none absolute -top-10 left-2 flex items-center gap-2 text-[10px] font-heading font-semibold uppercase tracking-[0.16em] text-prerna-orange">
+                    <span className="-rotate-3 text-black whitespace-nowrap rounded-full bg-prerna-orange-light px-3 py-1 shadow-[0_10px_24px_rgba(255,136,0,0.16)]">
+                      Fill the form to sign up
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      className="h-7 w-10 translate-y-4 text-prerna-orange"
+                      viewBox="0 0 48 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 7C16 4 31 7 34 17C35 21 33 25 28 27"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeDasharray="4 5"
+                      />
+                      <path
+                        d="M25 22L28 27L34 25"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <MotionButton
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`${primaryButtonClass} min-h-14 px-7 text-base`}
+                    type="button"
+                    onClick={() => openFormModal('hero')}
+                  >
+                    {content.primaryCta}
+                  </MotionButton>
+                </div>
               </div>
               {content.microCopy ? <p className="mt-3 text-sm text-slate-500">{content.microCopy}</p> : null}
               {content.socialProof ? (
