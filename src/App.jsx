@@ -12,6 +12,7 @@ import {
   Gauge,
   LayoutDashboard,
   MonitorCheck,
+  Phone,
   SearchCheck,
   Shield,
 } from 'lucide-react'
@@ -48,7 +49,7 @@ const content = {
   chat: 'Need Help? Contact Us',
 }
 
-const googleFormUrl = 'https://forms.gle/ZN9PWNQghGz5eAE29'
+const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc891RmwyqqqRuB_xbM8dn7O80W5oUqTiJgMs0T5e9Jl4RBlA/viewform'
 
 const problems = [
   ['Shield', 'Safer Learning Environment', 'Built for digital learning', 'The internet offers powerful learning opportunities, but it also exposes children to harmful websites, unsafe downloads, and online distractions.'],
@@ -175,6 +176,7 @@ const iconMap = {
   Gauge,
   ChartColumn,
   CircleHelp,
+  Phone,
 }
 
 const primaryButtonClass =
@@ -236,12 +238,31 @@ function Section({ id, className = '', children }) {
   )
 }
 
+function GoogleFormEmbed({ height = '3260px', className = '' }) {
+  const embedUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc891RmwyqqqRuB_xbM8dn7O80W5oUqTiJgMs0T5e9Jl4RBlA/viewform?embedded=true'
+
+  return (
+    <iframe
+      src={embedUrl}
+      className={`w-full ${className}`}
+      style={{ height }}
+      frameBorder="0"
+      marginHeight="0"
+      marginWidth="0"
+      title="Apni Prerna Subscription Form"
+    >
+      Loading form...
+    </iframe>
+  )
+}
+
 function App() {
   const [activeFaq, setActiveFaq] = useState(0)
   const [activeSection, setActiveSection] = useState('home')
   const [activeDashboardTab, setActiveDashboardTab] = useState(dashboardItems[0][1])
   const [faqQuery, setFaqQuery] = useState('')
   const [showStickyCta, setShowStickyCta] = useState(false)
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false)
   const heroRef = useRef(null)
 
   const filteredFaqs = useMemo(
@@ -306,7 +327,11 @@ function App() {
 
   const openFormModal = (source) => {
     trackEvent('cta_click', source)
-    window.open(googleFormUrl, '_blank', 'noopener,noreferrer')
+    if (source === 'hero') {
+      setIsFormModalOpen(true)
+    } else {
+      window.open(googleFormUrl, '_blank', 'noopener,noreferrer')
+    }
   }
 
   return (
@@ -350,35 +375,6 @@ function App() {
               {content.heroDescription ? <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">{content.heroDescription}</p> : null}
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <div className="relative w-fit">
-                  <div className="pointer-events-none absolute -top-10 left-2 flex items-center gap-2 text-[10px] font-heading font-semibold uppercase tracking-[0.16em] text-prerna-orange">
-                    <span className="-rotate-3 text-black whitespace-nowrap rounded-full bg-prerna-orange-light px-3 py-1 shadow-[0_10px_24px_rgba(255,136,0,0.16)]">
-                      Fill the form to sign up
-                    </span>
-                    <svg
-                      aria-hidden="true"
-                      className="h-7 w-10 translate-y-4 text-prerna-orange"
-                      viewBox="0 0 48 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3 7C16 4 31 7 34 17C35 21 33 25 28 27"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeDasharray="4 5"
-                      />
-                      <path
-                        d="M25 22L28 27L34 25"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-
                   <MotionButton
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
@@ -389,6 +385,15 @@ function App() {
                     {content.primaryCta}
                   </MotionButton>
                 </div>
+                <MotionA
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`${secondaryButtonClass} min-h-14 px-7 text-base`}
+                  href="tel:+918446248280"
+                >
+                  <Phone className="mr-2 h-5 w-5" aria-hidden="true" />
+                  +91 84462 48280
+                </MotionA>
               </div>
               {content.microCopy ? <p className="mt-3 text-sm text-slate-500">{content.microCopy}</p> : null}
               {content.socialProof ? (
@@ -871,6 +876,46 @@ function App() {
       >
         {content.stickyCta}
       </MotionButton>
+
+      <a
+        href="tel:+918446248280"
+        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-[0_16px_40px_rgba(34,197,94,0.32)] transition hover:-translate-y-0.5 hover:bg-green-600 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-green-500/30"
+        aria-label="Call +91 84462 48280"
+      >
+        <Phone className="h-6 w-6" aria-hidden="true" />
+      </a>
+
+      <AnimatePresence>
+        {isFormModalOpen && (
+          <MotionDiv
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.24 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+            onClick={() => setIsFormModalOpen(false)}
+          >
+            <MotionDiv
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.24 }}
+              className="relative w-full max-w-4xl overflow-hidden rounded-[2rem] bg-white shadow-[0_32px_64px_rgba(0,0,0,0.24)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-lg transition hover:bg-white"
+                onClick={() => setIsFormModalOpen(false)}
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+              <GoogleFormEmbed height="80vh" />
+            </MotionDiv>
+          </MotionDiv>
+        )}
+      </AnimatePresence>
 
     </div>
   )
