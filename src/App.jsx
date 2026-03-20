@@ -114,7 +114,7 @@ const comparisonRows = [
 const plans = [
   {
     name: 'Special Offer',
-    price: '₹99',
+    price: 'Free',
     originalPrice: '₹999',
     cadence: '/month',
     billed: 'First 100 Parents only',
