@@ -17,6 +17,7 @@ import {
   Shield,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const content = {
   navCta: 'Book the call now',
@@ -101,15 +102,6 @@ const dashboardPreviews = {
     label: 'Long-term usage history',
   },
 }
-
-const comparisonRows = [
-  ['Harmful website blocking', 'Included', 'Limited or inconsistent'],
-  ['Distraction control', 'Included', 'Often missing'],
-  ['Device safety monitoring', 'Included', 'Basic only'],
-  ['Parent activity summaries', 'Included', 'Not always available'],
-  ['Weekly usage reports', 'Premium plan', 'Rare'],
-  ['Learning-focused controls', 'Designed for students', 'General purpose'],
-]
 
 const plans = [
   {
@@ -356,6 +348,9 @@ function App() {
                 {label}
               </a>
             ))}
+            <Link className="rounded-full px-3 py-2 transition hover:text-prerna-orange" to="/blogs">
+              Blogs
+            </Link>
           </nav>
 
           <button className={`${primaryButtonClass} hidden md:inline-flex`} type="button" onClick={() => openFormModal('header')}>
