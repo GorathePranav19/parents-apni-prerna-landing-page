@@ -9,20 +9,75 @@ function formatDate(dateValue) {
   return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(date)
 }
 
+function stripMarkdown(text) {
+  return String(text || '')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/[*_`>#-]+/g, '')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function toSectionsFromMarkdown(markdown) {
+  const blocks = String(markdown || '')
+    .split(/\n{2,}/)
+    .map((block) => stripMarkdown(block))
+    .filter(Boolean)
+
+  if (!blocks.length) {
+    return []
+  }
+
+  return [
+    {
+      heading: '',
+      paragraphs: blocks,
+      list: [],
+    },
+  ]
+}
+
+function inferExcerpt(post) {
+  if (post.excerpt) {
+    return post.excerpt
+  }
+
+  const snippet = stripMarkdown(post.contentMarkdown || '')
+  if (snippet.length <= 180) {
+    return snippet
+  }
+
+  return `${snippet.slice(0, 177)}...`
+}
+
+function inferReadingTime(post) {
+  if (post.readingTime) {
+    return post.readingTime
+  }
+
+  if (Number.isFinite(post.readingTimeMinutes)) {
+    return `${post.readingTimeMinutes} min read`
+  }
+
+  return ''
+}
+
 function normalizePost(post) {
+  const sections = Array.isArray(post.sections) && post.sections.length ? post.sections : toSectionsFromMarkdown(post.contentMarkdown)
+
   return {
-    id: post._id,
+    id: post.id || post._id,
     slug: post.slug,
     title: post.title,
-    excerpt: post.excerpt,
-    category: post.category,
-    featuredImage: post.featuredImage,
-    readingTime: post.readingTime,
-    publishedAt: formatDate(post.publishedAt),
+    excerpt: inferExcerpt(post),
+    category: post.category || 'Blog',
+    featuredImage: post.featuredImage || post.heroImage?.url || '/og-image.png',
+    readingTime: inferReadingTime(post),
+    publishedAt: formatDate(post.publishedAt || post.createdAt),
     author: post.author?.name || 'Apni Prerna Team',
     authorRole: post.author?.role || '',
-    tags: post.tags || [],
-    sections: post.sections || [],
+    tags: Array.isArray(post.tags) ? post.tags : [],
+    sections,
     quote: post.quote || null,
   }
 }
@@ -57,7 +112,7 @@ async function fetchJson(path) {
   const payload = await parseResponse(response)
 
   if (!response.ok) {
-    throw new Error(payload.message || `Request failed with status ${response.status}`)
+    throw new Error(payload.error?.message || payload.message || `Request failed with status ${response.status}`)
   }
 
   return payload
@@ -65,10 +120,12 @@ async function fetchJson(path) {
 
 export async function fetchBlogs() {
   const payload = await fetchJson('/api/blogs')
-  return (payload.blogs || []).map(normalizePost)
+  const list = Array.isArray(payload.blogs) ? payload.blogs : Array.isArray(payload.data) ? payload.data : []
+  return list.map(normalizePost)
 }
 
 export async function fetchBlogBySlug(slug) {
   const payload = await fetchJson(`/api/blogs/${encodeURIComponent(slug)}`)
-  return payload.blog ? normalizePost(payload.blog) : null
+  const blog = payload.blog || payload.data || null
+  return blog ? normalizePost(blog) : null
 }
