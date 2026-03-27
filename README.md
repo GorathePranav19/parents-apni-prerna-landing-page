@@ -1,48 +1,99 @@
 # Apni Prerna Landing Page + Blog API
 
-This repository now includes:
-- A React + Vite landing page (`src/`)
-- A backend blog publishing service (`backend/`) using Express, MongoDB, and Sanity image uploads
+This repository contains:
+- Frontend landing page + blog UI in `src/` (React + Vite)
+- Backend blog API in `backend/` (Express + MongoDB + optional Sanity image upload)
 
-## Frontend
+## What Was Cleaned Up
+
+To reduce duplication and keep one backend source of truth:
+- Removed the legacy `server/` API folder (duplicate backend implementation)
+- Moved blog seeding to `backend/scripts/seedBlogs.js`
+- Moved seed content to `backend/seedData/blogs.js`
+- Updated pricing copy from old `999` references to `₹99/month`
+
+## Prerequisites
+
+- Node.js 20+
+- npm 10+
+- MongoDB URI
+
+## Step-by-Step: Start the Project
+
+### 1. Install dependencies
 
 ```bash
 npm install
-npm run dev
 ```
 
-## Blog API
+### 2. Confirm environment files
 
-### 1. Configure environment
+You mentioned `.env` files are already configured. If needed later, templates are:
+- Root: `.env.example`
+- Backend: `backend/.env.example`
 
-```bash
-cp backend/.env.example backend/.env
-```
-
-The backend loads `backend/.env` (and also accepts root `.env` values for compatibility).
-
-Set the required values in `backend/.env`:
+Required backend variables:
 - `MONGODB_URI`
 - `BLOG_PRIVATE_API_KEY`
+
+Optional (only for image upload endpoints):
 - `SANITY_PROJECT_ID`
 - `SANITY_DATASET`
 - `SANITY_TOKEN`
 
-`SANITY_*` variables are required for image upload endpoints (`/api/blog-images` and multipart `heroImage` uploads on `/api/blogs`).
-
-### 2. Run API
+### 3. Start backend API (Terminal 1)
 
 ```bash
 npm run dev:api
 ```
 
-Default API base URL: `http://localhost:4000`
+Expected API URL: `http://localhost:4000`
 
-### 3. Run quality checks
+Health check:
+
+```bash
+curl http://localhost:4000/api/health
+```
+
+### 4. Start frontend app (Terminal 2)
+
+```bash
+npm run dev
+```
+
+Expected frontend URL: `http://localhost:5173`
+
+### 5. Open the app
+
+- Landing page: `http://localhost:5173/`
+- Blog list: `http://localhost:5173/blogs`
+
+## Optional: Seed Demo Blogs
+
+```bash
+npm run seed:blogs
+```
+
+This now seeds through the active backend model.
+
+## Quality Checks
+
+Run lint:
 
 ```bash
 npm run lint
+```
+
+Run backend tests:
+
+```bash
 npm run test:api
+```
+
+Build frontend:
+
+```bash
+npm run build
 ```
 
 ## API Endpoints
@@ -54,49 +105,6 @@ npm run test:api
 - `GET /api/blogs/:slug` (public, published only by default)
 - `PATCH /api/blogs/:id/publish` (private)
 
-Private endpoints require:
-- `x-api-key: <BLOG_PRIVATE_API_KEY>` or
+Private endpoints accept:
+- `x-api-key: <BLOG_PRIVATE_API_KEY>`
 - `Authorization: Bearer <BLOG_PRIVATE_API_KEY>`
-
-## Validation and Error Behavior
-
-- Invalid JSON payloads return `400` with message: `Invalid JSON payload.`
-- Invalid pagination/query values (for example non-integer `page` or `limit`) return `400`.
-- Invalid blog IDs for publish operations return `400`.
-- Missing/invalid auth on private routes returns `401`.
-- Oversized file uploads (>5MB) return `413`.
-
-## Blog Model Highlights
-
-- Markdown-first storage (`contentMarkdown`)
-- Unique slug with collision handling
-- Draft/publish workflow (`isPublished`, `publishedAt`)
-- Reading time auto-calculation
-- Tags + category + SEO fields (`metaTitle`, `metaDescription`)
-- Hero image metadata (`url`, `assetRef`, `altText`)
-
-## Example Requests
-
-Create a blog (private):
-
-```bash
-curl -X POST http://localhost:4000/api/blogs \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: $BLOG_PRIVATE_API_KEY" \
-  -d '{
-    "title": "How to Build Safe Digital Habits",
-    "contentMarkdown": "# Safe Habits\nStart with a family agreement...",
-    "excerpt": "Practical digital safety steps for parents.",
-    "tags": "parenting,digital-safety",
-    "isPublished": true
-  }'
-```
-
-Upload inline image (private):
-
-```bash
-curl -X POST http://localhost:4000/api/blog-images \
-  -H "x-api-key: $BLOG_PRIVATE_API_KEY" \
-  -F "image=@./hero.png" \
-  -F "alt=Dashboard screenshot"
-```
