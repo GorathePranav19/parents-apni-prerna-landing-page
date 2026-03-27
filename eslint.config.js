@@ -27,12 +27,15 @@ export default defineConfig([
     },
   },
   {
-    files: ['server/**/*.js'],
+    files: ['backend/**/*.js', 'server/**/*.js', '*.config.js', '*.js'],
+    ignores: ['src/**/*'],
     extends: [js.configs.recommended],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module',
       globals: globals.node,
+      parserOptions: {
+        sourceType: 'module',
+      },
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' }],

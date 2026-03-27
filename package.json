@@ -5,14 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "node server/index.js",
-    "server:dev": "node --watch server/index.js",
+    "server": "node backend/server.js",
+    "server:dev": "node --watch backend/server.js",
+    "dev:api": "node --watch backend/server.js",
     "seed:blogs": "node server/seedBlogs.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "start:api": "node backend/server.js",
+    "preview": "vite preview",
+    "test:api": "node --test --test-concurrency=1 backend/tests/**/*.test.js"
   },
   "dependencies": {
+    "@sanity/client": "^7.12.0",
     "@tailwindcss/vite": "^4.2.1",
     "canvas-confetti": "^1.9.4",
     "cors": "^2.8.5",
@@ -21,9 +25,11 @@
     "framer-motion": "^12.35.2",
     "lucide-react": "^0.577.0",
     "mongoose": "^8.19.2",
+    "multer": "^2.0.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.4",
+    "slugify": "^1.6.6",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
@@ -35,6 +41,8 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "mongodb-memory-server": "^11.0.1",
+    "supertest": "^7.2.2",
     "vite": "^7.3.1"
   }
 }
