@@ -17,6 +17,7 @@ import {
   Shield,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const content = {
   navCta: 'Book the call now',
@@ -37,7 +38,7 @@ const content = {
   howHeadline: 'How Apni Prerna Works',
   dashboardHeadline: 'Parent Dashboard for Clear Activity Insights',
   pricingHeadline: 'Special Offer for Early Users',
-  pricingSubheadline: 'Get Apni Prerna for just ₹99/month for the first 100 parents, instead of the regular price of ₹999/month.',
+  pricingSubheadline: 'Get Apni Prerna for just ₹99/month for the first 100 parents.',
   faqHeadline: 'Frequently Asked Questions',
   faqSearch: 'Search questions',
   finalHeadline: 'Give Your Child a Safer Digital Future',
@@ -102,20 +103,11 @@ const dashboardPreviews = {
   },
 }
 
-const comparisonRows = [
-  ['Harmful website blocking', 'Included', 'Limited or inconsistent'],
-  ['Distraction control', 'Included', 'Often missing'],
-  ['Device safety monitoring', 'Included', 'Basic only'],
-  ['Parent activity summaries', 'Included', 'Not always available'],
-  ['Weekly usage reports', 'Premium plan', 'Rare'],
-  ['Learning-focused controls', 'Designed for students', 'General purpose'],
-]
-
 const plans = [
   {
     name: 'Special Offer',
-    price: 'Free',
-    originalPrice: '₹999',
+    price: '₹99',
+    originalPrice: '',
     cadence: '/month',
     billed: 'First 100 Parents only',
     featured: true,
@@ -356,6 +348,9 @@ function App() {
                 {label}
               </a>
             ))}
+            <Link className="rounded-full px-3 py-2 transition hover:text-prerna-orange" to="/blogs">
+              Blogs
+            </Link>
           </nav>
 
           <button className={`${primaryButtonClass} hidden md:inline-flex`} type="button" onClick={() => openFormModal('header')}>
@@ -654,7 +649,7 @@ function App() {
                   {plan.badge ? <span className={`inline-flex rounded-full px-3 py-2 text-sm font-semibold ${plan.featured ? 'bg-prerna-blue text-white' : 'bg-prerna-blue-light text-prerna-blue'}`}>{plan.badge}</span> : null}
                   <h3 className="mt-5 font-heading text-2xl text-slate-900">{plan.name}</h3>
                   <div className="mt-5 flex items-end justify-center gap-3">
-                    <span className="pb-2 text-2xl font-semibold text-slate-400 line-through">{plan.originalPrice}</span>
+                    {plan.originalPrice ? <span className="pb-2 text-2xl font-semibold text-slate-400 line-through">{plan.originalPrice}</span> : null}
                     <strong className="font-heading text-5xl text-slate-950">{plan.price}</strong>
                     <span className="pb-2 text-slate-600">{plan.cadence}</span>
                   </div>
