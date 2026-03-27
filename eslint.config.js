@@ -27,7 +27,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['backend/**/*.js', 'server/**/*.js', '*.config.js', '*.js'],
+    files: ['backend/**/*.js', '*.config.js', '*.js'],
     ignores: ['src/**/*'],
     extends: [js.configs.recommended],
     languageOptions: {

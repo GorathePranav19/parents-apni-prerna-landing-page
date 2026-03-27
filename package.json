@@ -8,7 +8,7 @@
     "server": "node backend/server.js",
     "server:dev": "node --watch backend/server.js",
     "dev:api": "node --watch backend/server.js",
-    "seed:blogs": "node server/seedBlogs.js",
+    "seed:blogs": "node backend/scripts/seedBlogs.js",
     "build": "vite build",
     "lint": "eslint .",
     "start:api": "node backend/server.js",
