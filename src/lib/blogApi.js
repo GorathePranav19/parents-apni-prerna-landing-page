@@ -9,32 +9,89 @@ function formatDate(dateValue) {
   return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(date)
 }
 
-function stripMarkdown(text) {
-  return String(text || '')
-    .replace(/^#{1,6}\s+/gm, '')
-    .replace(/[*_`>#-]+/g, '')
-    .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
 function toSectionsFromMarkdown(markdown) {
-  const blocks = String(markdown || '')
-    .split(/\n{2,}/)
-    .map((block) => stripMarkdown(block))
-    .filter(Boolean)
-
-  if (!blocks.length) {
+  if (!markdown) {
     return []
   }
 
-  return [
-    {
-      heading: '',
-      paragraphs: blocks,
-      list: [],
-    },
-  ]
+  const lines = String(markdown).split('\n')
+  const sections = []
+  let currentSection = null
+  let currentParagraphs = []
+  let currentList = []
+  let inCodeBlock = false
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim()
+
+    // Skip code blocks
+    if (line.startsWith('```')) {
+      inCodeBlock = true
+      continue
+    }
+    if (line.endsWith('```')) {
+      inCodeBlock = false
+      continue
+    }
+
+    // Skip processing if in code block
+    if (inCodeBlock) {
+      currentParagraphs.push(line)
+      continue
+    }
+
+    // Check for heading (h1-h6)
+    const headingMatch = line.match(/^(#{1,6})\s+(.*)$/)
+    if (headingMatch) {
+      // Save current section if exists
+      if (currentParagraphs.length > 0 || currentList.length > 0 || currentSection) {
+        sections.push({
+          heading: currentSection || '',
+          paragraphs: currentParagraphs,
+          list: currentList,
+        })
+        currentParagraphs = []
+        currentList = []
+      }
+
+      currentSection = headingMatch[1].trim()
+      continue
+    }
+
+    // Check for list item
+    const listMatch = line.match(/^[-*]\s+(.*)$/)
+    if (listMatch) {
+      currentList.push(listMatch[1].trim())
+      continue
+    }
+
+    // Check for empty line (section separator)
+    if (line === '' && (currentParagraphs.length > 0 || currentList.length > 0)) {
+      sections.push({
+        heading: currentSection || '',
+        paragraphs: currentParagraphs,
+        list: currentList,
+      })
+      currentParagraphs = []
+      currentList = []
+    }
+
+    // Regular paragraph
+    if (line && !headingMatch && !listMatch) {
+      currentParagraphs.push(line)
+    }
+  }
+
+  // Add last section if exists
+  if (currentParagraphs.length > 0 || currentList.length > 0 || currentSection) {
+    sections.push({
+      heading: currentSection || '',
+      paragraphs: currentParagraphs,
+      list: currentList,
+    })
+  }
+
+  return sections
 }
 
 function inferExcerpt(post) {
