@@ -4,7 +4,7 @@ export const apn31Blog = {
   category: 'Parent Guide',
   excerpt:
     'If rules, bans, and daily reminders are not working at home, this 3-layer system helps parents reduce conflict, protect learning time, and build healthier digital habits.',
-  heroImageUrl: 'https://picsum.photos/seed/apniprerna-blog-31-hero/1200/675',
+  heroImageUrl: 'https://placehold.co/600x450/blog-screen-time-system-hero',
   heroImageAltText: 'Parent and child reviewing a study-first device routine together at a desk',
   tags: ['Online Safety', 'Study Focus', 'Family Systems'],
   metaTitle: 'Screen-Time Fights Every Evening? A 3-Layer System for Parents | ApniPrerna',
@@ -12,7 +12,7 @@ export const apn31Blog = {
     'A practical framework for parents to reduce screen-time conflict, build study-first digital habits, and protect children online without turning home into a policing system.',
   contentMarkdown: `# Screen-Time Fights Every Evening? Use This 3-Layer Family System Instead
 
-![Parent and child facing screen-time tension during evening homework time](https://picsum.photos/seed/apniprerna-blog-31-1/1200/800)
+![Parent and child facing screen-time tension during evening homework time](https://placehold.co/600x400/blog-screen-time-conflict-scene)
 
 By the time homework starts, many homes are already in conflict.
 
@@ -46,7 +46,7 @@ Three breakdowns happen again and again:
 
 The result is a cycle of argument, guilt, and inconsistent enforcement.
 
-![Diagram showing a three-layer family system: routine, guardrails, and weekly review](https://picsum.photos/seed/apniprerna-blog-31-2/1400/1050)
+![Diagram showing a three-layer family system: routine, guardrails, and weekly review](https://placehold.co/600x450/blog-3-layer-framework-diagram)
 
 ## A better model: 3-layer family system
 
@@ -65,7 +65,7 @@ Keep it simple:
 
 Put this routine where both parent and child can see it. When the routine is visible, correction feels fair instead of personal.
 
-![A visible weekly study routine chart placed near a student desk](https://picsum.photos/seed/apniprerna-blog-31-3/1200/900)
+![A visible weekly study routine chart placed near a student desk](https://placehold.co/600x450/blog-study-routine-board)
 
 ## Layer 2: Guardrails that run automatically
 
@@ -93,7 +93,7 @@ This keeps the focus on progress and ownership. The child is part of the system,
 
 ## Where ApniPrerna fits naturally
 
-![Parent dashboard view highlighting blocked risks and study focus trends](https://picsum.photos/seed/apniprerna-blog-31-4/1440/900)
+![Parent dashboard view highlighting blocked risks and study focus trends](https://placehold.co/1440x900/blog-dashboard-guidance-view)
 
 ApniPrerna supports this 3-layer system without turning parenting into surveillance.
 
@@ -127,7 +127,7 @@ This tone changes the relationship immediately. Guidance replaces punishment.
 
 ## Next step for parents
 
-![Parent and child reviewing weekly digital habits together in a calm conversation](https://picsum.photos/seed/apniprerna-blog-31-5/1200/800)
+![Parent and child reviewing weekly digital habits together in a calm conversation](https://placehold.co/600x400/blog-weekly-review-conversation)
 
 Book an ApniPrerna setup call this week and bring three things:
 
