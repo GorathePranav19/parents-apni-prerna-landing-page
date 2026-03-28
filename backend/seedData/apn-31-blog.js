@@ -4,15 +4,13 @@ export const apn31Blog = {
   category: 'Parent Guide',
   excerpt:
     'If rules, bans, and daily reminders are not working at home, this 3-layer system helps parents reduce conflict, protect learning time, and build healthier digital habits.',
-  heroImageUrl: 'https://placehold.co/600x450/blog-screen-time-system-hero',
+  heroImageUrl: '/blog-images/blog-screen-time-system-hero.webp',
   heroImageAltText: 'Parent and child reviewing a study-first device routine together at a desk',
   tags: ['Online Safety', 'Study Focus', 'Family Systems'],
   metaTitle: 'Screen-Time Fights Every Evening? A 3-Layer System for Parents | ApniPrerna',
   metaDescription:
     'A practical framework for parents to reduce screen-time conflict, build study-first digital habits, and protect children online without turning home into a policing system.',
   contentMarkdown: `# Screen-Time Fights Every Evening? Use This 3-Layer Family System Instead
-
-![Parent and child facing screen-time tension during evening homework time](https://placehold.co/600x400/blog-screen-time-conflict-scene)
 
 By the time homework starts, many homes are already in conflict.
 
@@ -21,6 +19,8 @@ Parents are repeating the same lines every day: "Close that tab." "Stop watching
 Children feel controlled. Parents feel ignored. Nobody feels good about how device time is going.
 
 If this sounds familiar, the problem is usually not effort. The problem is system design.
+
+![Parent and child facing screen-time tension during evening homework time](/blog-images/blog-screen-time-conflict-scene.webp)
 
 ## Why most families stay stuck even after trying hard
 
@@ -46,13 +46,15 @@ Three breakdowns happen again and again:
 
 The result is a cycle of argument, guilt, and inconsistent enforcement.
 
-![Diagram showing a three-layer family system: routine, guardrails, and weekly review](https://placehold.co/600x450/blog-3-layer-framework-diagram)
+## A better model: the 3-layer family system
 
-## A better model: 3-layer family system
+![Diagram showing a three-layer family system: routine, guardrails, and weekly review](/blog-images/blog-3-layer-framework-diagram.webp)
 
 If your goal is safer learning and fewer daily fights, use this order:
 
 ## Layer 1: Shared routine before restrictions
+
+![A visible weekly study routine chart placed near a student desk](/blog-images/blog-study-routine-board.webp)
 
 Start with one visible study routine for weekdays.
 
@@ -64,8 +66,6 @@ Keep it simple:
 - no-device slot before bedtime
 
 Put this routine where both parent and child can see it. When the routine is visible, correction feels fair instead of personal.
-
-![A visible weekly study routine chart placed near a student desk](https://placehold.co/600x450/blog-study-routine-board)
 
 ## Layer 2: Guardrails that run automatically
 
@@ -93,7 +93,7 @@ This keeps the focus on progress and ownership. The child is part of the system,
 
 ## Where ApniPrerna fits naturally
 
-![Parent dashboard view highlighting blocked risks and study focus trends](https://placehold.co/1440x900/blog-dashboard-guidance-view)
+![Parent dashboard view highlighting blocked risks and study focus trends](/blog-images/blog-dashboard-guidance-view.webp)
 
 ApniPrerna supports this 3-layer system without turning parenting into surveillance.
 
@@ -112,7 +112,7 @@ If you want to reset your current pattern, use this:
 **Day 1 (Setup):** Agree on weekday routine and write it down.
 **Day 2 (Protection):** Enable harmful-site blocking and study-hour restrictions.
 **Day 3 (School fit):** Add class-related websites to allowed list.
-**Day 4 (Communication):** Explain "why" in one clear conversation, no threats.
+**Day 4 (Communication):** Explain the "why" in one clear conversation, no threats.
 **Day 5 (Observe):** Let the system run; avoid changing rules mid-day.
 **Day 6 (Review):** Check trend signals, not one-off incidents.
 **Day 7 (Adjust):** Make one change for next week and keep everything else stable.
@@ -125,15 +125,15 @@ Small, consistent structure beats dramatic reactions every time.
 
 This tone changes the relationship immediately. Guidance replaces punishment.
 
+![Parent and child reviewing weekly digital habits together in a calm conversation](/blog-images/blog-weekly-review-conversation.webp)
+
 ## Next step for parents
 
-![Parent and child reviewing weekly digital habits together in a calm conversation](https://placehold.co/600x400/blog-weekly-review-conversation)
+Book the ApniPrerna setup call this week and bring three things:
 
-Book an ApniPrerna setup call this week and bring three things:
-
-1. Your child's current class/study timetable
-2. Top distraction websites you want limited during study hours
-3. One family non-negotiable for digital safety
+1. your child's current class/study timetable
+2. top distraction websites you want limited during study hours
+3. one family non-negotiable for digital safety
 
 In one guided setup, you can move from daily arguments to a system that is clear, fair, and sustainable.`,
 }

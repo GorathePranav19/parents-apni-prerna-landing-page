@@ -9,6 +9,16 @@ function formatDate(dateValue) {
   return new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(date)
 }
 
+function stripMarkdown(markdown) {
+  return String(markdown || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!\[[^\]]*]\([^)]+\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_`>#-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 function toSectionsFromMarkdown(markdown) {
   if (!markdown) {
     return []
@@ -16,80 +26,74 @@ function toSectionsFromMarkdown(markdown) {
 
   const lines = String(markdown).split('\n')
   const sections = []
-  let currentSection = null
+  let currentHeading = ''
   let currentParagraphs = []
   let currentList = []
+  let currentListType = 'ul'
   let inCodeBlock = false
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim()
-
-    // Skip code blocks
-    if (line.startsWith('```')) {
-      inCodeBlock = true
-      continue
-    }
-    if (line.endsWith('```')) {
-      inCodeBlock = false
-      continue
+  function flushSection() {
+    if (!currentParagraphs.length && !currentList.length) {
+      return
     }
 
-    // Skip processing if in code block
-    if (inCodeBlock) {
-      currentParagraphs.push(line)
-      continue
-    }
-
-    // Check for heading (h1-h6)
-    const headingMatch = line.match(/^(#{1,6})\s+(.*)$/)
-    if (headingMatch) {
-      // Save current section if exists
-      if (currentParagraphs.length > 0 || currentList.length > 0 || currentSection) {
-        sections.push({
-          heading: currentSection || '',
-          paragraphs: currentParagraphs,
-          list: currentList,
-        })
-        currentParagraphs = []
-        currentList = []
-      }
-
-      currentSection = headingMatch[1].trim()
-      continue
-    }
-
-    // Check for list item
-    const listMatch = line.match(/^[-*]\s+(.*)$/)
-    if (listMatch) {
-      currentList.push(listMatch[1].trim())
-      continue
-    }
-
-    // Check for empty line (section separator)
-    if (line === '' && (currentParagraphs.length > 0 || currentList.length > 0)) {
-      sections.push({
-        heading: currentSection || '',
-        paragraphs: currentParagraphs,
-        list: currentList,
-      })
-      currentParagraphs = []
-      currentList = []
-    }
-
-    // Regular paragraph
-    if (line && !headingMatch && !listMatch) {
-      currentParagraphs.push(line)
-    }
-  }
-
-  // Add last section if exists
-  if (currentParagraphs.length > 0 || currentList.length > 0 || currentSection) {
     sections.push({
-      heading: currentSection || '',
+      heading: currentHeading,
       paragraphs: currentParagraphs,
       list: currentList,
+      listType: currentListType,
     })
+    currentParagraphs = []
+    currentList = []
+    currentListType = 'ul'
   }
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim()
+
+    if (line.startsWith('```')) {
+      inCodeBlock = !inCodeBlock
+      continue
+    }
+
+    if (inCodeBlock) {
+      continue
+    }
+
+    const headingMatch = line.match(/^(#{1,6})\s+(.*)$/)
+    if (headingMatch) {
+      flushSection()
+      currentHeading = headingMatch[2].trim()
+      continue
+    }
+
+    if (!line) {
+      flushSection()
+      continue
+    }
+
+    const unorderedMatch = line.match(/^[-*]\s+(.*)$/)
+    const orderedMatch = line.match(/^\d+\.\s+(.*)$/)
+    if (unorderedMatch || orderedMatch) {
+      const nextListType = orderedMatch ? 'ol' : 'ul'
+      if (currentList.length && currentListType !== nextListType) {
+        flushSection()
+      }
+      currentListType = nextListType
+      currentList.push((unorderedMatch || orderedMatch)?.[1]?.trim() || '')
+      continue
+    }
+
+    if (currentList.length) {
+      flushSection()
+    }
+
+    if (line) {
+      currentParagraphs.push(line)
+    }
+  }
+
+  flushSection()
 
   return sections
 }
@@ -129,12 +133,14 @@ function normalizePost(post) {
     excerpt: inferExcerpt(post),
     category: post.category || 'Blog',
     featuredImage: post.featuredImage || post.heroImage?.url || '/og-image.png',
+    featuredImageAlt: post.heroImage?.altText || post.heroImageAltText || post.title,
     readingTime: inferReadingTime(post),
     publishedAt: formatDate(post.publishedAt || post.createdAt),
     author: post.author?.name || 'Apni Prerna Team',
     authorRole: post.author?.role || '',
     tags: Array.isArray(post.tags) ? post.tags : [],
     sections,
+    contentMarkdown: post.contentMarkdown || '',
     quote: post.quote || null,
   }
 }

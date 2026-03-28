@@ -3,28 +3,59 @@ import { ArrowLeft, CalendarDays, Clock3, UserCircle2 } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { fetchBlogBySlug, fetchBlogs } from '../lib/blogApi.js'
 
+function parseImageParagraph(paragraph) {
+  const match = String(paragraph || '').trim().match(/^!\[(.*?)\]\(([^)\s]+)\)$/)
+  if (!match) {
+    return null
+  }
+
+  return {
+    alt: match[1]?.trim() || 'Article image',
+    src: match[2]?.trim() || '',
+  }
+}
+
 function ArticleSection({ section }) {
   return (
     <section className="rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-[0_14px_30px_rgba(0,20,48,0.07)]">
       {section.heading ? <h2 className="font-heading text-2xl leading-tight text-slate-900">{section.heading}</h2> : null}
 
       {section.paragraphs
-        ? section.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="mt-4 text-[15px] leading-relaxed text-slate-700">
-              {paragraph}
-            </p>
-          ))
+        ? section.paragraphs.map((paragraph, index) => {
+            const imageData = parseImageParagraph(paragraph)
+            if (imageData) {
+              return (
+                <figure key={`${imageData.src}-${index}`} className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+                  <img src={imageData.src} alt={imageData.alt} loading="lazy" className="h-auto w-full object-cover" />
+                </figure>
+              )
+            }
+
+            return (
+              <p key={`${paragraph}-${index}`} className="mt-4 text-[15px] leading-relaxed text-slate-700">
+                {paragraph}
+              </p>
+            )
+          })
         : null}
 
-      {section.list ? (
-        <ul className="mt-4 space-y-2 text-[15px] leading-relaxed text-slate-700">
-          {section.list.map((item) => (
-            <li key={item} className="flex gap-3">
-              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-prerna-blue" aria-hidden />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+      {section.list && section.list.length ? (
+        section.listType === 'ol' ? (
+          <ol className="mt-4 list-inside list-decimal space-y-2 text-[15px] leading-relaxed text-slate-700">
+            {section.list.map((item, index) => (
+              <li key={`${item}-${index}`}>{item}</li>
+            ))}
+          </ol>
+        ) : (
+          <ul className="mt-4 space-y-2 text-[15px] leading-relaxed text-slate-700">
+            {section.list.map((item, index) => (
+              <li key={`${item}-${index}`} className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-prerna-blue" aria-hidden />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )
       ) : null}
     </section>
   )
@@ -122,7 +153,7 @@ export default function SingleBlogTemplate({ slug: slugProp }) {
         </Link>
 
         <header className="mt-6 overflow-hidden rounded-3xl border border-white/75 bg-white/85 shadow-[0_20px_56px_rgba(0,34,94,0.12)]">
-          <img src={post.featuredImage} alt={post.title} className="h-72 w-full object-cover md:h-96" />
+          <img src={post.featuredImage} alt={post.featuredImageAlt || post.title} className="h-72 w-full object-cover md:h-96" />
 
           <div className="p-6 md:p-8">
             {post.category ? <p className="font-heading text-xs uppercase tracking-[0.2em] text-prerna-blue">{post.category}</p> : null}
